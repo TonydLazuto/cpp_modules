@@ -11,32 +11,44 @@
 /* ************************************************************************** */
 
 #include "ClassPhonebook.hpp"
-#include "ClassContact.hpp"
 
 int     main(void)
 {
 	Phonebook	phonebook;
 	std::string buf;
 
+	// for (int i= 0; i < 8; i++)
+	// {
+	// 	phonebook.contact[i].setFirstName("John");
+	// 	phonebook.contact[i].setLastName("Doe");
+	// 	phonebook.contact[i].setNickname("jd");
+	// 	phonebook.contact[i].setPhoneNumber(619);
+	// 	phonebook.contact[i].setDarkestSecret("Gibberish");
+	// }
 	while (1)
 	{
 		std::cout << "Choose a command [ADD, SEARCH, EXIT] : ";
 		std::cin >> buf;
 		if (buf.compare("ADD") == 0)
 		{
-			phonebook.addContact();
+			if (phonebook.getNbContacts() < 8)
+			{
+				std::cout << phonebook.getNbContacts() << std::endl;
+				phonebook.contact[phonebook.getNbContacts()].addContact();
+				phonebook.incNbContacts();
+			}
+			else
+				std::cout << "Only 8 contacts can be registered." << std::endl;
 		}
 		else if (buf.compare("SEARCH") == 0)
 		{
-			for (std::list<Contact>::iterator it=phonebook.myContacts.begin();
-			 it != phonebook.myContacts.end(); ++it)
-    		std::cout << ' ' << *it;
+			phonebook.search();
+			// std::cout << "nb contacts : " << phonebook.getNbContacts() << std::endl;			
 		}
 		else if (buf.compare("EXIT") == 0)
 			break ;
 		else
-			std::cout << "I said choose between [ADD, SEARCH, EXIT] :@" >> std::endl;
+			std::cout << "Only : [ADD, SEARCH, EXIT] are possibles !" << std::endl;
 	}
 	return (0);
 }
-

@@ -10,7 +10,9 @@ RM			=	/bin/rm -f
 
 OBJ_DIR		=	obj
 
-SRCS		=	ClassContacts.cpp
+SRCS		=	ClassContact.cpp \
+                ClassPhonebook.cpp \
+                main.cpp
 
 OBJS		=	$(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
 

@@ -13,42 +13,51 @@
 #include "ClassPhonebook.hpp"
 
 Phonebook::Phonebook( void ) {
-	std::cout << "Contacts Constructor called" << std::endl;
+	std::cout << "Phonebook Constructor called" << std::endl;
 }
 
 Phonebook::~Phonebook( void ) {
-	std::cout << "Contacts Destructor called" << std::endl;
+	std::cout << "Phonebook Destructor called" << std::endl;
 }
 
 int     Phonebook::getNbContacts( void ) {
-
 	return Phonebook::_nbContacts;
-
 }
 
 int     Phonebook::_nbContacts = 0;
 
-int		Phonebook::addContact( void ) {
+void	Phonebook::incNbContacts( void ) {
+	Phonebook::_nbContacts++;
+}
 
-	std::string		firstName;
-	std::string		lastName;
-	std::string		nickname;
-	int				phoneNumber;
-	std::string		darkestSecret;
+void	Phonebook::printField( std::string str ) {
+		if (!str.empty())
+		{
+			if (str.length() > 10) {
+				str.resize(10);
+				str.back() = '.';
+			}
+			std::cout << std::setw(10) << str;
+		}
+}
 
-	std::cout << "Enter your first name : ";
-	std::cin >> firstName;
-	std::cout << "Enter your last name : ";
-	std::cin >> lastName;
-	std::cout << "Enter your nickname : ";
-	std::cin >> nickname;
-	std::cout << "Enter your phone number : ";
-	std::cin >> phoneNumber;
-	std::cout << "Enter your darkest secret : ";
-	std::cin >> darkestSecret;
-
-	Contact newContact(firstName, lastName, nickname,
-			phoneNumber, darkestSecret);
-	this->myContacts.push_back(newContact);
-	Phonebook::_nbContacts += 1;
+void	Phonebook::search( void ) {
+	std::cout << std::setw(10) << "index" << "|";
+	std::cout << std::setw(10) << "first name" << "|";
+	std::cout << std::setw(10) << "last name" << "|";
+	std::cout << std::setw(10) << "nickname" << std::endl;
+	for (int i = 0; i < 8; i++)
+	{
+		std::cout << std::setw(10) << i << "|";
+		std::cout << std::setw(10);
+		std::string firstName = this->contact[i].getFirstName();
+		this->printField(firstName);
+		std::cout << "|";
+		std::string lastName = this->contact[i].getLastName();
+		this->printField(lastName);
+		std::cout << "|";
+		std::string nickname = this->contact[i].getNickname();
+		this->printField(nickname);
+		std::cout << std::endl;
+	}
 }

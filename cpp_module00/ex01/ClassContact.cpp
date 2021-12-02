@@ -12,17 +12,10 @@
 
 #include "ClassContact.hpp"
 
-Contact::Contact( std::string firstName, std::string lastName,
-				std::string nickname, int phoneNumber,
-				std::string darkestSecret ) {
+Contact::Contact( void ) {
 	std::cout << "Contact Constructor called" << std::endl;
-	setFirstName(firstName);
-	setLastName(lastName);
-	setNickname(nickname);
-	setPhoneNumber(phoneNumber);
-	setDarkestSecret(darkestSecret);
-}
 
+}
 Contact::~Contact( void ) {
 	std::cout << "Contact Destructor called" << std::endl;
 }
@@ -41,4 +34,48 @@ void	Contact::setPhoneNumber(int phoneNumber) {
 }
 void	Contact::setDarkestSecret(std::string darkestSecret) {
 	this->_darkestSecret = darkestSecret;
+}
+
+std::string	Contact::getFirstName( void ) {
+	return this->_firstName;
+}
+std::string	Contact::getLastName( void ) {
+	return this->_lastName;
+}
+std::string	Contact::getNickname( void ) {
+	return this->_nickname;
+}
+int			Contact::getPhoneNumber( void ) {
+	return this->_phoneNumber;
+}
+std::string	Contact::getDarkestSecret( void ) {
+	return this->_darkestSecret;
+}
+
+void	Contact::addContact( void ) {
+
+	std::string		firstName;
+	std::string		lastName;
+	std::string		nickname;
+	int				phoneNumber;
+	std::string		darkestSecret;
+
+	std::cout << "Enter your first name : ";
+	std::cin >> firstName;
+	std::cout << "Enter your last name : ";
+	std::cin >> lastName;
+	std::cout << "Enter your nickname : ";
+	std::cin >> nickname;
+	std::cout << "Enter your phone number : ";
+	std::cin >> phoneNumber;
+	//protect
+	std::cout << "Enter your darkest secret : ";
+	std::cin >> darkestSecret;
+	std::cout << std::endl;
+
+	setFirstName(firstName);
+	setLastName(lastName);
+	setNickname(nickname);
+	setPhoneNumber(phoneNumber);
+	setDarkestSecret(darkestSecret);
 }

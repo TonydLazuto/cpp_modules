@@ -14,6 +14,7 @@
 # define _CLASSPHONEBOOK_HPP_
 
 # include <iostream>
+# include <iomanip>
 # include <list>
 # include "ClassContact.hpp"
 
@@ -22,19 +23,20 @@ class Phonebook {
 
 public:
 
-	std::list<Contact> myContacts;
 	Phonebook( void );
 	~Phonebook( void );
 
+	Contact		contact[8];
+
 	static int	getNbContacts( void );
-	int			addContact( void );
+	void		incNbContacts( void );
+	void		search();
+	void		printField( std::string str );
 
 private:
 
 	static int	_nbContacts;
 
 };
-
-
 
 #endif

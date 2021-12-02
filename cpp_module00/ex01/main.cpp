@@ -43,12 +43,13 @@ int     main(void)
 		else if (buf.compare("SEARCH") == 0)
 		{
 			phonebook.search();
-			// std::cout << "nb contacts : " << phonebook.getNbContacts() << std::endl;			
+			std::cout << "Do you want to get the associated phone numbers : ";
+			std::cin >> numberField;
 		}
 		else if (buf.compare("EXIT") == 0)
 			break ;
 		else
-			std::cout << "Only : [ADD, SEARCH, EXIT] are possibles !" << std::endl;
+			std::cout << "Only : [ADD, SEARCH, EXIT] are possible." << std::endl;
 	}
 	return (0);
 }

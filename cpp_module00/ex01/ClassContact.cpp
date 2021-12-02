@@ -52,11 +52,16 @@ std::string	Contact::getDarkestSecret( void ) {
 	return this->_darkestSecret;
 }
 
+void	Contact::checkInteger( void ) {
+
+}
+
 void	Contact::addContact( void ) {
 
 	std::string		firstName;
 	std::string		lastName;
 	std::string		nickname;
+	std::string		strPhoneNumber;
 	int				phoneNumber;
 	std::string		darkestSecret;
 
@@ -67,7 +72,7 @@ void	Contact::addContact( void ) {
 	std::cout << "Enter your nickname : ";
 	std::cin >> nickname;
 	std::cout << "Enter your phone number : ";
-	std::cin >> phoneNumber;
+	std::cin >> strPhoneNumber;
 	//protect
 	std::cout << "Enter your darkest secret : ";
 	std::cin >> darkestSecret;

@@ -32,6 +32,7 @@ public:
 	void		incNbContacts( void );
 	void		search();
 	void		printField( std::string str );
+	void		();
 
 private:
 

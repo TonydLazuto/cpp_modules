@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   megaphone.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderose <aderose@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 15:40:05 by aderose           #+#    #+#             */
-/*   Updated: 2021/12/02 10:17:54 by aderose          ###   ########.fr       */
+/*   Created: 2021/12/02 10:16:35 by aderose           #+#    #+#             */
+/*   Updated: 2021/12/02 10:17:27 by aderose          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "megaphone.hpp"
+#ifndef MEGAPHONE_HPP
+# define MEGAPHONE_HPP
 
-Megaphone::Megaphone( void ) {
-}
+#include <iostream>
+#include <string.h>
+#include <locale>
 
-Megaphone::~Megaphone( void ) {
-}
+class Megaphone {
 
-void    Megaphone::print_empty( void ) {
+public :
 
-    std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+    Megaphone( void );
+    ~Megaphone( void );
 
-}
+    void    print_empty( void );
+    void    print_uppercase( std::string str );
 
-void    Megaphone::print_uppercase( std::string str ) {
+};
 
-    std::locale loc;
-    for (std::string::size_type i=0; i < str.length(); ++i)
-        std::cout << std::toupper(str[i],loc);
-
-}
-
+#endif

@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   ClassPhonebook.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aderose <aderose@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 15:40:05 by aderose           #+#    #+#             */
-/*   Updated: 2021/12/02 10:17:54 by aderose          ###   ########.fr       */
+/*   Created: 2021/11/28 16:32:12 by aderose           #+#    #+#             */
+/*   Updated: 2021/12/02 13:21:17 by aderose          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "megaphone.hpp"
+#ifndef _CLASSPHONEBOOK_HPP_
+# define _CLASSPHONEBOOK_HPP_
 
-Megaphone::Megaphone( void ) {
-}
+# include <iostream>
+# include <list>
+# include "ClassContact.hpp"
 
-Megaphone::~Megaphone( void ) {
-}
+class Phonebook {
 
-void    Megaphone::print_empty( void ) {
 
-    std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+public:
 
-}
+	std::list<Contact> myContacts;
+	Phonebook( void );
+	~Phonebook( void );
 
-void    Megaphone::print_uppercase( std::string str ) {
+	static int	getNbContacts( void );
+	int			addContact( void );
 
-    std::locale loc;
-    for (std::string::size_type i=0; i < str.length(); ++i)
-        std::cout << std::toupper(str[i],loc);
+private:
 
-}
+	static int	_nbContacts;
 
+};
+
+
+
+#endif

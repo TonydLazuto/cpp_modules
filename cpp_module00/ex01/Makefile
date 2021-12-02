@@ -1,6 +1,6 @@
 .PHONY		=	all clean fclean re bonus
 
-NAME		=	metacheap
+NAME		=	metalowcost
 
 CC			=	g++
 

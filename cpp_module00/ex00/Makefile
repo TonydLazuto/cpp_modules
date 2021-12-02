@@ -10,7 +10,9 @@ RM			=	/bin/rm -f
 
 OBJ_DIR		=	obj
 
-SRCS		=	megaphone.cpp
+SRCS		=	megaphone.cpp \
+                main.cpp
+
 
 OBJS		=	$(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
 

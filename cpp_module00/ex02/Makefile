@@ -4,7 +4,7 @@ NAME		=	account
 
 CC			=	g++
 
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -pedantic
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -pedantic -I.
 
 RM			=	/bin/rm -f
 

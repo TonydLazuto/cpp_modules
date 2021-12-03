@@ -35,13 +35,13 @@ void	Phonebook::printField( std::string str ) {
 		{
 			if (str.length() > 10) {
 				str.resize(10);
-				str.back() = '.';
+				str.at(9) = '.';
 			}
 			std::cout << std::setw(10) << str;
 		}
 }
 
-void	Phonebook::search( void ) {
+void	Phonebook::search( int specific ) {
 	std::cout << std::setw(10) << "index" << "|";
 	std::cout << std::setw(10) << "first name" << "|";
 	std::cout << std::setw(10) << "last name" << "|";

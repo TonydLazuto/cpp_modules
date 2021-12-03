@@ -42,9 +42,10 @@ int     main(void)
 		}
 		else if (buf.compare("SEARCH") == 0)
 		{
-			phonebook.search();
-			std::cout << "Do you want to get the associated phone numbers : ";
-			std::cin >> numberField;
+			phonebook.search( 0 );
+			std::cout << "Do you want to check a specific account : ";
+			
+
 		}
 		else if (buf.compare("EXIT") == 0)
 			break ;

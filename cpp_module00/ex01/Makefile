@@ -4,7 +4,7 @@ NAME		=	metalowcost
 
 CC			=	g++
 
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -pedantic
 
 RM			=	/bin/rm -f
 
@@ -23,7 +23,7 @@ $(NAME): 		$(OBJS)
 
 $(OBJ_DIR)/%.o:	%.cpp
 				@mkdir -p $(OBJ_DIR)
-				$(CC) -c $< -o $@
+				$(CC) $(CFLAGS) -c $< -o $@
 
 clean:			
 				rm -rf $(OBJ_DIR)

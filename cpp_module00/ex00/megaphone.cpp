@@ -6,7 +6,7 @@
 /*   By: aderose <aderose@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 15:40:05 by aderose           #+#    #+#             */
-/*   Updated: 2021/12/02 10:17:54 by aderose          ###   ########.fr       */
+/*   Updated: 2021/12/03 10:49:18 by aderose          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void    Megaphone::print_uppercase( std::string str ) {
     std::locale loc;
     for (std::string::size_type i=0; i < str.length(); ++i)
         std::cout << std::toupper(str[i],loc);
+    std::cout << ' ';
 
 }
 

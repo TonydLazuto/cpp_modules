@@ -16,6 +16,7 @@
 # include <iostream>
 # include <iomanip>
 # include <list>
+# include <string>
 # include "ClassContact.hpp"
 
 class Phonebook {
@@ -30,9 +31,9 @@ public:
 
 	static int	getNbContacts( void );
 	void		incNbContacts( void );
-	void		search();
+	void		search( int specific );
 	void		printField( std::string str );
-	void		();
+	// void		();
 
 private:
 

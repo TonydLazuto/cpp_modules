@@ -16,6 +16,7 @@ int     main(void)
 {
 	Phonebook	phonebook;
 	std::string buf;
+	std::string index;
 
 	// for (int i= 0; i < 8; i++)
 	// {
@@ -42,15 +43,17 @@ int     main(void)
 		}
 		else if (buf.compare("SEARCH") == 0)
 		{
-			phonebook.search( 0 );
-			std::cout << "Do you want to check a specific account : ";
-			
+			phonebook.search();
+			std::cout << "Which account do you want to check : ";
+			std::cin >> index;
+			if (phonebook.checkIndex(index))
+				phonebook.spec(index);
 
 		}
 		else if (buf.compare("EXIT") == 0)
 			break ;
 		else
-			std::cout << "Only : [ADD, SEARCH, EXIT] are possible." << std::endl;
+			std::cout << "/!\\ Only : [ADD, SEARCH, EXIT] are possible. /!\\" << std::endl;
 	}
 	return (0);
 }

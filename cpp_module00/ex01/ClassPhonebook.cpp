@@ -31,17 +31,16 @@ void	Phonebook::incNbContacts( void ) {
 }
 
 void	Phonebook::printField( std::string str ) {
-		if (!str.empty())
-		{
+		if (!str.empty()) {
 			if (str.length() > 10) {
 				str.resize(10);
 				str.at(9) = '.';
 			}
-			std::cout << std::setw(10) << str;
 		}
+		std::cout << std::setw(10) << str;
 }
 
-void	Phonebook::search( int specific ) {
+void	Phonebook::search( void ) {
 	std::cout << std::setw(10) << "index" << "|";
 	std::cout << std::setw(10) << "first name" << "|";
 	std::cout << std::setw(10) << "last name" << "|";
@@ -50,14 +49,44 @@ void	Phonebook::search( int specific ) {
 	{
 		std::cout << std::setw(10) << i << "|";
 		std::cout << std::setw(10);
-		std::string firstName = this->contact[i].getFirstName();
-		this->printField(firstName);
+		this->printField(this->contact[i].getFirstName());
 		std::cout << "|";
-		std::string lastName = this->contact[i].getLastName();
-		this->printField(lastName);
+		this->printField(this->contact[i].getLastName());
 		std::cout << "|";
-		std::string nickname = this->contact[i].getNickname();
-		this->printField(nickname);
+		this->printField(this->contact[i].getNickname());
 		std::cout << std::endl;
 	}
+}
+
+int		Phonebook::checkIndex( std::string index ) {
+	if (index.length() != 1) {
+		std::cout << "Index to long." << std::endl;
+		return 0;
+	}
+	if (!isdigit(index.at(0))){
+		std::cout << "Index is not digit." << std::endl;
+		return 0;
+	}
+	if (index.at(0) < '0' || index.at(0) > '7'){
+		std::cout << "Index is not among phonebook accounts." << std::endl;
+		return 0;
+	}
+	return 1;
+}
+
+void	Phonebook::spec( std::string index ) {
+	int i;
+
+	i = atoi(index.c_str());
+	std::cout << std::setw(15) << "index " << ": " << i << std::endl;
+	std::cout << std::setw(15) << "first name " << ": ";
+	std::cout << this->contact[i].getFirstName() << std::endl;
+	std::cout << std::setw(15) << "last name " << ": ";
+	std::cout << this->contact[i].getLastName() << std::endl;
+	std::cout << std::setw(15) << "nickname " << ": ";
+	std::cout << this->contact[i].getNickname() << std::endl;
+	std::cout << std::setw(15) << "phone number " << ": ";
+	std::cout << this->contact[i].getPhoneNumber() << std::endl;
+	std::cout << std::setw(15) << "darkest secret " << ": ";
+	std::cout << this->contact[i].getDarkestSecret() << std::endl;
 }

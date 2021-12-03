@@ -29,7 +29,7 @@ void	Contact::setLastName(std::string lastName) {
 void	Contact::setNickname(std::string nickname) {
 	this->_nickname = nickname;
 }
-void	Contact::setPhoneNumber(int phoneNumber) {
+void	Contact::setPhoneNumber(std::string phoneNumber) {
 	this->_phoneNumber = phoneNumber;
 }
 void	Contact::setDarkestSecret(std::string darkestSecret) {
@@ -45,23 +45,32 @@ std::string	Contact::getLastName( void ) {
 std::string	Contact::getNickname( void ) {
 	return this->_nickname;
 }
-int			Contact::getPhoneNumber( void ) {
+std::string	Contact::getPhoneNumber( void ) {
 	return this->_phoneNumber;
 }
 std::string	Contact::getDarkestSecret( void ) {
 	return this->_darkestSecret;
 }
 
-// void	Contact::checkInteger( void ) {
-
-// }
+void	Contact::checkInteger( std::string str ) {
+	if (str.length() > 10) {
+		std::cout << "Becareful phone numbers exceeds 10 numbers." << std::endl;
+		return ;
+	}
+	for ( std::string::iterator it=str.begin(); it!=str.end(); ++it) {
+		if (!isdigit(*it)) {
+			std::cout << "Becareful some characters are not digit." << std::endl;
+			break ;
+		}
+	}
+}
 
 void	Contact::addContact( void ) {
 
 	std::string		firstName;
 	std::string		lastName;
 	std::string		nickname;
-	int				phoneNumber;
+	std::string		phoneNumber;
 	std::string		darkestSecret;
 
 	std::cout << "Enter your first name : ";
@@ -72,7 +81,7 @@ void	Contact::addContact( void ) {
 	std::cin >> nickname;
 	std::cout << "Enter your phone number : ";
 	std::cin >> phoneNumber;
-	//protect
+	this->checkInteger(phoneNumber);
 	std::cout << "Enter your darkest secret : ";
 	std::cin >> darkestSecret;
 	std::cout << std::endl;

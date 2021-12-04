@@ -8,11 +8,11 @@ Weapon::Weapon( std::string type ) {
 }
 Weapon::Weapon( void ) {
 	std::cout << "Construct Weapon.";// << std::endl;
-	std::cout << " -> " << this->getType() << std::endl;
+	std::cout << " ---> " << this->getType() << std::endl;
 }
 Weapon::~Weapon( void ) {
 	std::cout << "Destruct Weapon.";// << std::endl;
-	std::cout << " -> " << this->getType() << std::endl;
+	std::cout << " ---> " << this->getType() << std::endl;
 }
 
 std::string const&	Weapon::getType( void ) {

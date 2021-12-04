@@ -12,7 +12,14 @@
 
 #include <iostream>
 #include <ctime>
+#include <iomanip>
 #include "Account.hpp"
+
+/**
+ * cat out | cut -d " " -f2 > mine
+ * cat .log | cut -d " " -f2 > true
+ * diff mine true
+ */
 
 int		Account::_nbAccounts = 0;
 int		Account::_totalAmount = 0;
@@ -121,14 +128,16 @@ void	Account::displayStatus( void ) const {
 
 }
 
-void	_displayTimestamp( void ) {
+void	Account::_displayTimestamp( void ) {
 
-	std::time_t t = std::time(NULL);
+	std::time_t t;
+	std::time(&t);
 	std::tm *const __time = std::localtime(&t);
   	std::cout << "["
 		<< 1900 + __time->tm_year
 		<< __time->tm_mon
 		<< __time->tm_mday
+		<< "_"
 		<< __time->tm_hour
 		<< __time->tm_min
 		<< __time->tm_sec

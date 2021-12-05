@@ -1,5 +1,4 @@
 #include "HumanB.hpp"
-#include <iostream>
 
 HumanB::HumanB( std::string name, Weapon *weapon ) : _name(name), _weapon(weapon) {
 	std::cout << "Construct HumanB : " \
@@ -30,7 +29,6 @@ void	HumanB::attack( void ) {
 		std::cout << std::endl;
 	}
 }
-void	HumanB::setWeapon( Weapon weapon ) {
-	this->_tmp = weapon;
-	this->_weapon = &this->_tmp;
+void	HumanB::setWeapon( Weapon &weapon ) {
+	this->_weapon = &weapon;
 }

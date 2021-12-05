@@ -1,14 +1,13 @@
 #ifndef _HUMANB_HPP_
 # define _HUMANB_HPP_
 
-# include "Weapon.hpp"
 # include <iostream>
+# include "Weapon.hpp"
 
 class HumanB {
 	private :
 		std::string _name;
 		Weapon*		_weapon;
-		Weapon		_tmp;
 
 	public :
 
@@ -17,6 +16,6 @@ class HumanB {
 		~HumanB( void );
 		
 		void attack( void );
-		void setWeapon( Weapon weapon );
+		void setWeapon( Weapon &weapon );
 };
 #endif

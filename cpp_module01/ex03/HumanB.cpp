@@ -1,5 +1,4 @@
 #include "HumanB.hpp"
-#include <iostream>
 
 HumanB::HumanB( std::string name, Weapon *weapon ) : _name(name), _weapon(weapon) {
 	std::cout << "Construct HumanB : " \

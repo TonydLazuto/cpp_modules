@@ -13,8 +13,6 @@ Weapon::~Weapon( void ) {
 }
 
 std::string const&	Weapon::getType( void ) {
-
-
 	return this->_type;
 }
 

@@ -14,20 +14,24 @@
 
 int     main(int ac, char *av[]) {
 
-    Megaphone obj;
-
-    if (ac == 1)
-    {
-        obj.print_empty();
-        return (0);
-    }
-    av++;
-    while (*av)
-    {
-        std::string str(*av);
-        obj.print_uppercase(str);
-        av++;
-    }
-    std::cout << std::endl;
-    return (0);
+	if (ac == 1)
+	{
+		Megaphone::print_empty();
+		return (0);
+	}
+	av++;
+	while (*av)
+	{
+		std::string str(*av);
+		if (!str.empty())
+		{
+			int len = str.length();
+			Megaphone::print_uppercase(str, len);
+		}
+		av++;
+		if (*av)
+			std::cout << " ";
+	}
+	std::cout << std::endl;
+	return (0);
 }

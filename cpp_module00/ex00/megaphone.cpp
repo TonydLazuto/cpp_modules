@@ -20,16 +20,23 @@ Megaphone::~Megaphone( void ) {
 
 void    Megaphone::print_empty( void ) {
 
-    std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+	std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 
 }
 
-void    Megaphone::print_uppercase( std::string str ) {
+void    Megaphone::print_uppercase( std::string mystr, int len) {
 
-    std::locale loc;
-    for (std::string::size_type i=0; i < str.length(); ++i)
-        std::cout << std::toupper(str[i],loc);
-    std::cout << ' ';
+	char	str[len + 1];
+	char	upperstr[len + 1];
+	int		i;
 
+	i = 0;
+	strcpy(str, mystr.c_str());
+	while (str[i])
+	{
+		upperstr[i] = std::toupper(str[i]);
+		i++;
+	}
+	upperstr[len] = '\0';
+	std::cout << upperstr;
 }
-

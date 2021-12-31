@@ -15,17 +15,16 @@
 
 #include <iostream>
 #include <string.h>
-#include <locale>
 
 class Megaphone {
 
 public :
 
-    Megaphone( void );
-    ~Megaphone( void );
+	Megaphone( void );
+	~Megaphone( void );
 
-    void    print_empty( void );
-    void    print_uppercase( std::string str );
+	static void    print_empty( void );
+	static void    print_uppercase( std::string str, int len );
 
 };
 

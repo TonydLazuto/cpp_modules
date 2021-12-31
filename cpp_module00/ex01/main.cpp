@@ -15,7 +15,7 @@
 int     main(void)
 {
 	Phonebook	phonebook;
-	std::string buf;
+	std::string entry;
 	std::string index;
 
 	// for (int i= 0; i < 8; i++)
@@ -23,34 +23,33 @@ int     main(void)
 	// 	phonebook.contact[i].setFirstName("John");
 	// 	phonebook.contact[i].setLastName("Doe");
 	// 	phonebook.contact[i].setNickname("jd");
-	// 	phonebook.contact[i].setPhoneNumber(619);
+	// 	phonebook.contact[i].setPhoneNumber("619");
 	// 	phonebook.contact[i].setDarkestSecret("Gibberish");
 	// }
 	while (1)
 	{
 		std::cout << "Choose a command [ADD, SEARCH, EXIT] : ";
-		std::cin >> buf;
-		if (buf.compare("ADD") == 0)
+		std::cin >> entry;
+		if (entry.compare("ADD") == 0)
 		{
+			std::cout << "getNbContacts() : " << phonebook.getNbContacts() << std::endl;
 			if (phonebook.getNbContacts() < 8)
-			{
-				std::cout << phonebook.getNbContacts() << std::endl;
-				phonebook.contact[phonebook.getNbContacts()].addContact();
-				phonebook.incNbContacts();
-			}
+				phonebook.addContact();
 			else
-				std::cout << "Only 8 contacts can be registered." << std::endl;
+				std::cout << "Sorry... Already 8 contacts have been registered." << std::endl \
+				<< "No more contacts can be added." << std::endl \
+				<< "Try another command." << std::endl;
 		}
-		else if (buf.compare("SEARCH") == 0)
+		else if (entry.compare("SEARCH") == 0)
 		{
 			phonebook.search();
 			std::cout << "Which account do you want to check : ";
 			std::cin >> index;
 			if (phonebook.checkIndex(index))
-				phonebook.spec(index);
+				phonebook.fullInfo(index);
 
 		}
-		else if (buf.compare("EXIT") == 0)
+		else if (entry.compare("EXIT") == 0)
 			break ;
 		else
 			std::cout << "/!\\ Only : [ADD, SEARCH, EXIT] are possible. /!\\" << std::endl;

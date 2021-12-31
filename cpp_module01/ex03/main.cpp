@@ -11,9 +11,8 @@ int main() {
         bob.attack();
     }
     {
-        std::cout << std::endl;
-        
         Weapon club = Weapon("crude spiked club");
+
         HumanB jim("Jim");
         jim.setWeapon(club);
         jim.attack();

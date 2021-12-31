@@ -33,8 +33,7 @@ public :
 	std::string	getNickname( void );
 	std::string	getPhoneNumber( void );
 	std::string	getDarkestSecret( void );
-	void		addContact( void );
-	void		checkInteger( std::string phoneNumber );
+
 
 private :
 

@@ -4,7 +4,7 @@ Zombie::Zombie( void ) {
 	std::cout << "Zombie creaaateeaaddD" << std::endl;
 }
 Zombie::~Zombie( void ) {
-	std::cout << "I'm dyiiiinnngggG... My name was --> ";
+	std::cout << "I'm dyiiiinnngggG... My name was : ";
 	if (this->_name.empty())
 		std::cout << "doesn't even have one :'(" << std::endl;
 	else

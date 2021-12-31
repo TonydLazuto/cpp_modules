@@ -24,11 +24,8 @@ int     Phonebook::getNbContacts( void ) {
 	return Phonebook::_nbContacts;
 }
 
-int     Phonebook::_nbContacts = 0;
+int     Phonebook::_nbContacts = 8;
 
-void	Phonebook::incNbContacts( void ) {
-	Phonebook::_nbContacts++;
-}
 
 void	Phonebook::printField( std::string str ) {
 		if (!str.empty()) {
@@ -74,7 +71,7 @@ int		Phonebook::checkIndex( std::string index ) {
 	return 1;
 }
 
-void	Phonebook::spec( std::string index ) {
+void	Phonebook::fullInfo( std::string index ) {
 	int i;
 
 	i = atoi(index.c_str());
@@ -89,4 +86,48 @@ void	Phonebook::spec( std::string index ) {
 	std::cout << this->contact[i].getPhoneNumber() << std::endl;
 	std::cout << std::setw(15) << "darkest secret " << ": ";
 	std::cout << this->contact[i].getDarkestSecret() << std::endl;
+}
+
+void	Phonebook::checkInteger( std::string str ) {
+	if (str.length() != 10) {
+		std::cout << "Becareful the phone number has not 10 numbers." << std::endl;
+		return ;
+	}
+	for ( std::string::iterator it=str.begin(); it!=str.end(); ++it) {
+		if (!isdigit(*it)) {
+			std::cout << "Becareful some characters are not digit." << std::endl;
+			break ;
+		}
+	}
+}
+
+void	Phonebook::addContact( void ) {
+
+	std::string		firstName;
+	std::string		lastName;
+	std::string		nickname;
+	std::string		phoneNumber;
+	std::string		darkestSecret;
+	int				num;
+
+	std::cout << "Enter your first name : ";
+	std::cin >> firstName;
+	std::cout << "Enter your last name : ";
+	std::cin >> lastName;
+	std::cout << "Enter your nickname : ";
+	std::cin >> nickname;
+	std::cout << "Enter your phone number : ";
+	std::cin >> phoneNumber;
+	this->checkInteger(phoneNumber);
+	std::cout << "Enter your darkest secret : ";
+	std::cin >> darkestSecret;
+	std::cout << std::endl;
+
+	num = this->getNbContacts();
+	this->contact[num].setFirstName(firstName);
+	this->contact[num].setLastName(lastName);
+	this->contact[num].setNickname(nickname);
+	this->contact[num].setPhoneNumber(phoneNumber);
+	this->contact[num].setDarkestSecret(darkestSecret);
+	Phonebook::_nbContacts++;
 }

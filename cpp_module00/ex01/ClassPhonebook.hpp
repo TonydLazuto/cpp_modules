@@ -30,11 +30,13 @@ public:
 	Contact		contact[8];
 
 	static int	getNbContacts( void );
-	void		incNbContacts( void );
 	void		search( void );
 	void		printField( std::string str );
 	int			checkIndex( std::string index );
-	void		spec( std::string index );
+	void		fullInfo( std::string index );
+
+	void		addContact( void );
+	void		checkInteger( std::string phoneNumber );
 
 private:
 

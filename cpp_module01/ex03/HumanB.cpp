@@ -22,15 +22,11 @@ void	HumanB::attack( void ) {
 	{
 		std::cout << this->_name << " attacks with his ";
 		std::cout << this->_weapon->getType();
-		std::cout << std::endl;
 	}
 	else
-	{
 		std::cout << this->_name << " attacks without weapon.";
-		std::cout << std::endl;
-	}
+	std::cout << std::endl;
 }
-void	HumanB::setWeapon( Weapon weapon ) {
-	this->_tmp = weapon;
-	this->_weapon = &this->_tmp;
+void	HumanB::setWeapon( Weapon &weapon ) {
+	this->_weapon = &weapon;
 }

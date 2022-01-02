@@ -24,14 +24,11 @@ int	main(int ac, char *av[]) {
 	std::string s2 = av[3];
 	std::string cur;
 	std::ifstream ifs(filename, std::ios_base::in);
-	
 	std::string newfile;
 	std::size_t found;
-	int i = 0;
-	while (getline(ifs, cur))
+
+	while (getline(ifs, cur, '\0'))
 	{
-		if (i > 0)
-			newfile.push_back('\n');
 		found = cur.find(s1);
 		while (found != std::string::npos)
 		{
@@ -39,8 +36,7 @@ int	main(int ac, char *av[]) {
 			cur.insert(found, s2);
 			found = cur.find(s1);
 		}
-			newfile += cur;
-		i++;
+		newfile += cur;
 	}
 	ifs.close();
 	filename += "2";

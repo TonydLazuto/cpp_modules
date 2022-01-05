@@ -27,7 +27,7 @@ int	main(int ac, char *av[]) {
 	std::string newfile;
 	std::size_t found;
 
-	while (getline(ifs, cur, '\0'))
+	if (getline(ifs, cur, '\0'))
 	{
 		found = cur.find(s1);
 		while (found != std::string::npos)

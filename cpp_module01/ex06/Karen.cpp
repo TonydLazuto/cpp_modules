@@ -55,5 +55,28 @@ void	Karen::complain( std::string level ) {
 		std::cout << "[ Probably complaining about insignificant problems ]" <<std::endl;
 		return ;
 	}
-	(this->*arr[i])();
+	while (arr[i])
+	{
+		switch (i)
+		{
+			case 0:
+				std::cout << "[ DEBUG ]" << std::endl;
+				break;
+			case 1:
+				std::cout << "[ INFO ]" << std::endl;
+				break;
+			case 2:
+				std::cout << "[ WARNING ]" << std::endl;
+				break;
+			case 3:
+				std::cout << "[ ERROR ]" << std::endl;
+				break;
+			
+			default:
+				break;
+		}
+		(this->*arr[i])();
+		i++;
+		std::cout << std::endl;
+	}
 }

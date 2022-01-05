@@ -1,6 +1,6 @@
 .PHONY		=	all clean fclean re bonus
 
-NAME		=	ex00
+NAME		=	ex04
 
 CC			=	c++
 
@@ -10,10 +10,7 @@ RM			=	/bin/rm -f
 
 OBJ_DIR		=	obj
 
-SRCS		=	main.cpp \
-                Zombie.cpp \
-				newZombie.cpp \
-				randomChump.cpp
+SRCS		=	main.cpp
 
 OBJS		=	$(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
 

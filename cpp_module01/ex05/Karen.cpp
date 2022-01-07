@@ -55,5 +55,6 @@ void	Karen::complain( std::string level ) {
 		std::cout << "[ Probably complaining about insignificant problems ]" <<std::endl;
 		return ;
 	}
-	(this->*arr[i])();
+	else
+		(this->*arr[i])();
 }

@@ -3,13 +3,16 @@
 
 int	main ( int ac, char *av[] ) {
 
-	if (ac != 2)
-	{
-		std::cout << "Wrong amount of args." << std::endl;
-		return 1;
-	}
+	(void)ac;
+	(void)av;
+
 	Karen		k;
-	std::string	mylevel(av[1]);
-	k.complain(mylevel);
+	
+	k.complain("DEBUG");
+	k.complain("INFO");
+	k.complain("WARNING");
+	k.complain("ERROR");
+	// k.complain("qwerty");
+
 	return 0;
 }

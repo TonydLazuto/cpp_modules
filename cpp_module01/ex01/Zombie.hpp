@@ -9,6 +9,7 @@ private :
 public :
 
 	Zombie( void );
+	Zombie( std::string name );
 	~Zombie( void );
 	void		announce( void );
 	std::string	getName( void );

@@ -39,7 +39,7 @@ int	main(int ac, char *av[]) {
 		newfile += cur;
 	}
 	ifs.close();
-	filename += "2";
+	filename += ".replace";
 	std::ofstream ofs(filename, std::ios_base::out | std::ios_base::trunc);
 	ofs << newfile ;
 	ofs.close();

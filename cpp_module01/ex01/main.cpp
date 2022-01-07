@@ -6,7 +6,7 @@ int    main( void ) {
 	int		N = 10;
 
 	ztest.setName("ztest");
-
+	ztest.announce();
 	Zombie *z = zombieHorde(N, "horde");
 
 	Zombie *cpy = z;
@@ -16,6 +16,5 @@ int    main( void ) {
 		cpy++;
 	}
 	delete [] z;
-	ztest.announce();
 	return 0;
 }

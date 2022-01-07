@@ -2,14 +2,13 @@
 
 int     main( void ) {
     Zombie *z = new Zombie[5];
+    randomChump("rz1");
+    randomChump("rz2");
+    randomChump("rz3");
+
     Zombie *z2 = newZombie("z2");
     z2->announce();
-    randomChump("Random rz1");
-    randomChump("Random rz2");
-    randomChump("Random rz3");
-
-    Zombie z3;
-    z3.setName("z3");
+    Zombie z3("z3");
     z3.announce();
     delete [] z;
     delete z2;

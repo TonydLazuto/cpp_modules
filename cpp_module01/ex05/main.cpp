@@ -1,10 +1,7 @@
 #include "Karen.hpp"
 
 
-int	main ( int ac, char *av[] ) {
-
-	(void)ac;
-	(void)av;
+int	main () {
 
 	Karen		k;
 	
@@ -12,7 +9,7 @@ int	main ( int ac, char *av[] ) {
 	k.complain("INFO");
 	k.complain("WARNING");
 	k.complain("ERROR");
-	// k.complain("qwerty");
+	//k.complain("qwerty");
 
 	return 0;
 }

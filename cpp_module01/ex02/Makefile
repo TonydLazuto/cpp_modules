@@ -1,4 +1,4 @@
-.PHONY		:	all clean fclean re bonus
+.PHONY		:	all clean fclean re
 
 NAME		=	ex02
 

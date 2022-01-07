@@ -14,6 +14,7 @@ public :
 	void		announce( void );
 	std::string	getName( void );
 	void		setName( std::string name );
+
 };
 
 Zombie* newZombie( std::string name );

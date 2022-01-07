@@ -4,14 +4,12 @@ Zombie::Zombie( std::string name ) : _name(name){
 	std::cout << "<" << name << "> " \
 	<< "Zombie construct." << std::endl;
 }
-Zombie::Zombie( void ) {
-	std::cout << "Zombie construct." << std::endl;
+Zombie::Zombie( void ) : Zombie("Zombie") {
+	std::cout << "<" << this->_name << "> " \
+	<< "Zombie construct." << std::endl;
 }
 Zombie::~Zombie( void ) {
-	std::string name("empty");
-	if (!this->_name.empty())
-		name = this->_name;
-	std::cout << "<" << name << "> " \
+	std::cout << "<" << this->_name << "> " \
 	<< "DyiiiinnngggG..." << std::endl;
 }
 void	Zombie::announce( void ) {

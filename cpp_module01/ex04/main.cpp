@@ -39,18 +39,19 @@ int	main(int ac, char *av[]) {
 		std::cout << "Error: Ouput file." << std::endl;
 		return 1;
 	}
-		
-
 	if (getline(ifs, cur, '\0'))
 	{
-		found = cur.find(s1);
-		while (found != std::string::npos)
+		size_t position = 0;
+		if (!s1.empty())
 		{
-			cur.erase(found, s1.length());
-			cur.insert(found, s2);
-			found = cur.find(s1);
+			while ((found = cur.find(s1, position)) != std::string::npos) {
+				
+				cur.erase(found, s1.length());
+				cur.insert(found, s2);
+				position = found + s2.length();
+			}
 		}
-		newfile += cur;
+		newfile = cur;
 	}
 	ifs.close();
 	

@@ -17,9 +17,6 @@ class Karen {
 		~Karen( void );
 
 		void	complain( std::string level );
-		void	(Karen::*ft)( void );
 };
-
-typedef void (Karen::*KarenMemFn)( void );
 
 #endif

@@ -27,6 +27,20 @@ int	main(int ac, char *av[]) {
 	std::string newfile;
 	std::size_t found;
 
+	if (ifs.fail())
+	{
+		std::cout << "Error: Input file." << std::endl;
+		return 1;
+	}
+	filename += ".replace";
+	std::ofstream ofs(filename, std::ios_base::out | std::ios_base::trunc);
+	if (ofs.fail())
+	{
+		std::cout << "Error: Ouput file." << std::endl;
+		return 1;
+	}
+		
+
 	if (getline(ifs, cur, '\0'))
 	{
 		found = cur.find(s1);
@@ -39,8 +53,7 @@ int	main(int ac, char *av[]) {
 		newfile += cur;
 	}
 	ifs.close();
-	filename += ".replace";
-	std::ofstream ofs(filename, std::ios_base::out | std::ios_base::trunc);
+	
 	ofs << newfile ;
 	ofs.close();
 	return 0;

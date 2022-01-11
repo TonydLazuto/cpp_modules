@@ -13,7 +13,7 @@ FragTrap::FragTrap( FragTrap const& src ) {
 	*this = src;
 	std::cout << "<" << this->_name << "> FragTrap copy." << std::endl;
 }
-FragTrap&	FragTrap::operator=( FragTrap const& rhs ) {
+FragTrap& FragTrap::operator=( FragTrap const& rhs ) {
 	std::cout << "<" << rhs._name << "> FragTrap assign." << std::endl;
 	this->_name = rhs._name;
 	this->_hitPoints = rhs._hitPoints;
@@ -23,12 +23,6 @@ FragTrap&	FragTrap::operator=( FragTrap const& rhs ) {
 }
 
 void    FragTrap::highFivesGuys(void) const{
-    std::cout << "Everybody screams f*** pandemic!" << std::endl;
-}
-
-void	FragTrap::display_stats( void ) const {
-	std::cout << "--> Name : " << this->_name << std::endl;
-	std::cout << "--> Hitpoints : " << this->_hitPoints << std::endl;
-	std::cout << "--> Energy points : " << this->_energyPoints << std::endl;
-	std::cout << "--> Attack damage : " << this->_attackDamages << std::endl << std::endl;
+    std::cout << "<" << this->_name << "> Everybody screams f*** pandemic!" \
+	<< std::endl;
 }

@@ -13,7 +13,7 @@ ScavTrap::ScavTrap( ScavTrap const& src ) {
 	*this = src;
 	std::cout << "<" << this->_name << "> ScavTrap copy." << std::endl;
 }
-ScavTrap&	ScavTrap::operator=( ScavTrap const& rhs ) {
+ScavTrap& ScavTrap::operator=( ScavTrap const& rhs ) {
 	std::cout << "<" << rhs._name << "> ScavTrap assign." << std::endl;
 	this->_name = rhs._name;
 	this->_hitPoints = rhs._hitPoints;
@@ -27,9 +27,14 @@ void	ScavTrap::guardGate( void ) const{
 	<< "I'm in gate keeper mode now !" << std::endl;
 }
 
-void	ScavTrap::display_stats( void ) const {
-	std::cout << "--> Name : " << this->_name << std::endl;
-	std::cout << "--> Hitpoints : " << this->_hitPoints << std::endl;
-	std::cout << "--> Energy points : " << this->_energyPoints << std::endl;
-	std::cout << "--> Attack damage : " << this->_attackDamages << std::endl << std::endl;
+void	ScavTrap::attack( std::string const& target ) {
+	if (this->_hitPoints <= 0)
+	{
+		std::cout << "<" << this->_name
+		<< "> has no more hit points." << std::endl;
+		return ;
+	}
+	std::cout << "<" << this->_name << "> attack like a ScavTrap " \
+		<< target << ", causing " << this->_attackDamages \
+		<< " points of damage!" << std::endl;
 }

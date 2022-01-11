@@ -18,7 +18,7 @@ class ClapTrap
 		ClapTrap( void );
 		~ClapTrap( void );
 		ClapTrap( ClapTrap const& src );
-		ClapTrap&	operator=( ClapTrap const& rhs );
+		ClapTrap& operator=( ClapTrap const& rhs );
 		ClapTrap( std::string name );
 		ClapTrap( std::string name , unsigned int _hitPoints,
 			unsigned int _energyPoints, unsigned int _attackDamages);
@@ -37,6 +37,6 @@ class ClapTrap
 
 };
 
-std::ostream&	operator<<( std::ostream& o, ClapTrap const& rhs);
+std::ostream& operator<<( std::ostream& o, ClapTrap const& rhs);
 
 #endif

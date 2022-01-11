@@ -6,7 +6,7 @@
 # include <string>
 # include <iostream>
 
-class DiamondTrap : public ScavTrap, public FragTrap {
+class DiamondTrap : public FragTrap, public ScavTrap {
 
     private :
         std::string _name;
@@ -16,12 +16,11 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		DiamondTrap( void );
 		~DiamondTrap( void );
 		DiamondTrap( DiamondTrap const& src );
-		DiamondTrap&	operator=( DiamondTrap const& rhs );
+		DiamondTrap& operator=( DiamondTrap const& rhs );
 		DiamondTrap( std::string name );
 
-        void    whoAmI( void ) const;
+        void		whoAmI( void ) const;
 
-		void	display_stats( void ) const;
 };
 
 #endif

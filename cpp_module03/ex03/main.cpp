@@ -47,5 +47,18 @@ int main ( void )
 	palouf.display_stats();
 
 	assassin.highFivesGuys();
+
+	DiamondTrap ultime("Diamond ultime");
+	ultime.attack(assassin.getName());
+	assassin.takeDamage(ultime.getAttackDamage());
+	ultime.attack(assassin.getName());
+	assassin.takeDamage(ultime.getAttackDamage());
+
+	ultime.whoAmI();
+	ultime.highFivesGuys();
+	ultime.guardGate();
+
+	DiamondTrap ultime2 = ultime;
+	ultime2.display_stats();
 	return (0);
 }

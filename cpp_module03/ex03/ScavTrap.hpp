@@ -5,19 +5,19 @@
 # include <string>
 # include <iostream>
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
 
 	public :
 
 		ScavTrap( void );
 		~ScavTrap( void );
 		ScavTrap( ScavTrap const& src );
-		ScavTrap&	operator=( ScavTrap const& rhs );
+		ScavTrap& operator=( ScavTrap const& rhs );
 		ScavTrap( std::string name );
 
 		void	guardGate( void ) const;
 
-		void	display_stats( void ) const;
+		void	attack( std::string const& target );
 };
 
 #endif

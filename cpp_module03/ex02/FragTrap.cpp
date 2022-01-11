@@ -13,7 +13,7 @@ FragTrap::FragTrap( FragTrap const& src ) {
 	*this = src;
 	std::cout << "<" << this->_name << "> FragTrap copy." << std::endl;
 }
-FragTrap&	FragTrap::operator=( FragTrap const& rhs ) {
+FragTrap& FragTrap::operator=( FragTrap const& rhs ) {
 	std::cout << "<" << rhs._name << "> FragTrap assign." << std::endl;
 	this->_name = rhs._name;
 	this->_hitPoints = rhs._hitPoints;

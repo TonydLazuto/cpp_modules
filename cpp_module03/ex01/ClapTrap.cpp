@@ -1,14 +1,17 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap( void ) : _name("Clap Player"), _hitPoints(10), _energyPoints(10), _attackDamages(0) {
+ClapTrap::ClapTrap( void ) : _name("Clap Player"), _hitPoints(10)
+						, _energyPoints(10), _attackDamages(0) {
 	std::cout << "<" << this->_name << "> ClapTrap constructor." << std::endl;
 }
-ClapTrap::ClapTrap( std::string name ) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamages(0) {
+ClapTrap::ClapTrap( std::string name ) : _name(name), _hitPoints(10)
+						, _energyPoints(10), _attackDamages(0) {
 	std::cout << "<" << this->_name << "> ClapTrap constructor." << std::endl;
 }
 ClapTrap::ClapTrap( std::string name , unsigned int hitPoints,
-			unsigned int energyPoints, unsigned int attackDamages) :
-			_name(name), _hitPoints(hitPoints), _energyPoints(energyPoints), _attackDamages(attackDamages) {
+			unsigned int energyPoints, unsigned int attackDamages)
+			: _name(name), _hitPoints(hitPoints)
+			, _energyPoints(energyPoints), _attackDamages(attackDamages) {
 				std::cout << "<" << this->_name << "> ClapTrap constructor." << std::endl;
 }
 ClapTrap::~ClapTrap( void ) {
@@ -18,7 +21,7 @@ ClapTrap::ClapTrap( ClapTrap const& src ) {
 	*this = src;
 	std::cout << "<" << this->_name << "> ClapTrap copy." << std::endl;
 }
-ClapTrap&	ClapTrap::operator=( ClapTrap const& rhs ) {
+ClapTrap& ClapTrap::operator=( ClapTrap const& rhs ) {
 	std::cout << "<" << rhs._name << "> ClapTrap assign." << std::endl;
 	this->_name = rhs._name;
 	this->_hitPoints = rhs._hitPoints;
@@ -26,7 +29,7 @@ ClapTrap&	ClapTrap::operator=( ClapTrap const& rhs ) {
 	this->_attackDamages = rhs._attackDamages;
 	return *this;
 }
-std::ostream&	operator<<( std::ostream& o, ClapTrap const& rhs) {
+std::ostream& operator<<( std::ostream& o, ClapTrap const& rhs) {
 	o << rhs.getName();
 	return o;
 }

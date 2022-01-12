@@ -1,6 +1,6 @@
 .PHONY		:	all clean fclean re
 
-NAME		=	ex03
+NAME		=	ex00
 
 CC			=	c++
 
@@ -11,10 +11,11 @@ RM			=	/bin/rm -f
 OBJ_DIR		=	obj
 
 SRCS		=	main.cpp \
-				ClapTrap.cpp \
-				ScavTrap.cpp \
-				FragTrap.cpp \
-				DiamondTrap.cpp
+				Animal.cpp \
+				Dog.cpp \
+				Cat.cpp \
+				WrongAnimal.cpp \
+				WrongCat.cpp
 
 OBJS		=	$(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
 

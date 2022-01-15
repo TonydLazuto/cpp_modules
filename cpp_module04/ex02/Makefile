@@ -1,6 +1,6 @@
 .PHONY		:	all clean fclean re
 
-NAME		=	ex01
+NAME		=	ex02
 
 CC			=	c++
 
@@ -11,7 +11,7 @@ RM			=	/bin/rm -f
 OBJ_DIR		=	obj
 
 SRCS		=	main.cpp \
-				Animal.cpp \
+				AAnimal.cpp \
 				Cat.cpp \
 				Dog.cpp \
 				Brain.cpp

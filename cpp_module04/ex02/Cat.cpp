@@ -1,16 +1,16 @@
 #include "Cat.hpp"
 
-Cat::Cat( void ) : Animal("Siamois"), _brain(new Brain) {
+Cat::Cat( void ) : AAnimal("Siamois"), _brain(new Brain) {
 	std::cout << "Construct Cat --> " << this->getType() << std::endl;
 }
-Cat::Cat( std::string type ) : Animal(type), _brain(new Brain) {
+Cat::Cat( std::string type ) : AAnimal(type), _brain(new Brain) {
 	std::cout << "Construct Cat : " << this->_type << std::endl;
 }
 Cat::~Cat( void ) {
 	std::cout << "Destruct Cat." << std::endl;
 	delete this->_brain;
 }
-Cat::Cat(Cat const & src) : Animal() {
+Cat::Cat(Cat const & src) : AAnimal() {
 	this->_brain = new Brain;
 	*(this->_brain) = *(src._brain);
 }

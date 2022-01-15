@@ -1,22 +1,22 @@
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
 # include <iostream>
-# include "Animal.hpp"
+# include "AAnimal.hpp"
 # include "Brain.hpp"
 
-class Dog : public Animal
+class Cat : public AAnimal
 {
 	private:
 		Brain*	_brain;
 		
 	public:
-		Dog( void );
-		virtual ~Dog( void );
-		Dog(Dog const & src);
-		Dog& operator=(Dog const & rhs);
+		Cat( void );
+		virtual ~Cat( void );
+		Cat(Cat const & src);
+		Cat& operator=(Cat const & rhs);
 
-		Dog( std::string type );
+		Cat( std::string type );
 
 		void			makeSound(void) const;
 		virtual Brain	*getBrain(void) const;

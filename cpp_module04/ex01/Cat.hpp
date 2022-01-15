@@ -8,17 +8,20 @@
 class Cat : public Animal
 {
 	private:
-		// Brain*	_brain;
+		Brain*	_brain;
 		
 	public:
 		Cat( void );
-		~Cat( void );
+		virtual ~Cat( void );
 		Cat(Cat const & src);
 		Cat& operator=(Cat const & rhs);
 
 		Cat( std::string type );
 
-		void	makeSound(void) const;
+		void			makeSound(void) const;
+		virtual Brain	*getBrain(void) const;
+		std::string		getBrainIdea(int num) const;
+		void			setBrainIdea(std::string idea, int num);
 };
 
 #endif

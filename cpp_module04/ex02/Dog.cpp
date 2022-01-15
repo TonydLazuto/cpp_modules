@@ -1,16 +1,16 @@
 #include "Dog.hpp"
 
-Dog::Dog( void ) : Animal("Doberman"), _brain(new Brain) {
+Dog::Dog( void ) : AAnimal("Doberman"), _brain(new Brain) {
 	std::cout << "Construct Dog --> " << this->getType() << std::endl;
 }
-Dog::Dog( std::string type ) : Animal(type), _brain(new Brain) {
+Dog::Dog( std::string type ) : AAnimal(type), _brain(new Brain) {
 	std::cout << "Construct Dog : " << this->_type << std::endl;
 }
 Dog::~Dog( void ) {
 	std::cout << "Destruct Dog." << std::endl;
 	delete this->_brain;
 }
-Dog::Dog(Dog const & src) : Animal() {
+Dog::Dog(Dog const & src) : AAnimal() {
 	this->_brain = new Brain;
 	*(this->_brain) = *(src._brain);
 }

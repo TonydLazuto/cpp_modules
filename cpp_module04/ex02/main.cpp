@@ -1,4 +1,4 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "Brain.hpp"
@@ -9,7 +9,7 @@ int main(void)
 	int	arraySize = 10;
 	int i = 0;
 
-	Animal	*animals[10];
+	AAnimal	*animals[10];
 	while (i < arraySize / 2)
 	{
 		animals[i] = new Dog();
@@ -53,5 +53,10 @@ int main(void)
 	for (int it = 0; it < arraySize; ++it)
 		delete animals[it];
 
+	// AAnimal absAnimalTest;
+	// AAnimal *absAnimal = new AAnimal();
+	// absAnimal->makeSound();
+	// delete absAnimal;
+	
 	return (0);
 }

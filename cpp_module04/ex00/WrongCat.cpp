@@ -1,6 +1,6 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat( void ) : WrongAnimal("Siamois") {
+WrongCat::WrongCat( void ) : WrongAnimal("Wrongcatname") {
 	std::cout << "Construct WrongCat --> " << this->getType() << std::endl;
 }
 WrongCat::WrongCat( std::string type ) : WrongAnimal(type) {

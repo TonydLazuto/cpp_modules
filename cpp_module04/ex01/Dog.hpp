@@ -5,10 +5,10 @@
 # include "Animal.hpp"
 # include "Brain.hpp"
 
-class Dog : public Animal, Brain
+class Dog : public Animal
 {
 	private:
-		Brain*	_brain;
+		// Brain*	_brain;
 		
 	public:
 		Dog( void );

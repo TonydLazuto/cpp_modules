@@ -21,7 +21,7 @@ OBJS		=	$(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
 all: 			$(NAME)
 
 $(NAME): 		$(OBJS)
-				$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+				$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -g3 -fsanitize=address
 
 $(OBJ_DIR)/%.o:	%.cpp
 				@mkdir -p $(OBJ_DIR)

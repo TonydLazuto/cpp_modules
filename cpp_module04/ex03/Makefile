@@ -11,7 +11,9 @@ RM			=	/bin/rm -f
 OBJ_DIR		=	obj
 
 SRCS		=	main.cpp \
-				Amateria.cpp
+				Amateria.cpp \
+				Materia.cpp \
+				Character.cpp
 
 OBJS		=	$(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
 

@@ -4,7 +4,7 @@
 # include "ICharacter.hpp"
 #include <iostream>
 
-class AMateria
+class AMateria : public ICharacter
 {
 	protected:
 		std::string _type;
@@ -19,7 +19,7 @@ class AMateria
 
 		std::string const & getType() const; //Returns the materia type
 		virtual AMateria* 	clone() const = 0;
-		virtual void 		use(ICharacter const& target);
+		virtual void 		use(ICharacter const& target) override;
 };
 
 #endif

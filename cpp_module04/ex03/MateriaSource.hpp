@@ -2,11 +2,11 @@
 # define MATERIASOURCE_HPP
 
 # include "IMateriaSource.hpp"
+# include "AMateria.hpp"
 
 class MateriaSource : public IMateriaSource
-{
 	protected:
-		AMateria* _stock;
+		AMateria	*_amateria[4];
 
 	public:
 		

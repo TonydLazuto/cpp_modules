@@ -5,11 +5,11 @@
 # include "ICharacter.hpp"
 #include <iostream>
 
-class Character : public ICharacter, IAmate
+class Character : public ICharacter
 {
 	protected:
 		std::string	_name;
-		AMateria* 	_inventory;
+		AMateria* 	_inventory[4];
 
 	public:
 		Character( void );

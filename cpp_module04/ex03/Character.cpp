@@ -1,35 +1,37 @@
-#include "AMateria.hpp"
 #include "Character.hpp"
-
 
 Character::Character( void ) : _name("Character") {
 	std::cout << "Construct Character " << this->_name << std::endl;
 	for(int i = 0; i < 3; ++i)
-		this->_inventory[i] = NULL;
+		this->_inventory[i] = new None();
 }
 Character::Character( std::string name ) : _name(name) {
 	std::cout << "Construct Character " << this->_name << std::endl;
 	for(int i = 0; i < 3; ++i)
-		this->_inventory[i] = NULL;
+		this->_inventory[i] = new None();
 }
 Character::~Character( void ) {
 	std::cout << "Destruct Character " << this->_name << std::endl;
+	for(int i = 0; i < 3; ++i)
+		delete this->_inventory[i];
 }
 Character::Character(Character const & src) {
 	this->_name = src._name;
 	for(int i = 0; i < 3; ++i)
-	{
-		if (!this->_inventory[i]->getType().empty())
-		{
-			std::string	materiaName(this->_inventory[i]->getType());
-		}
-	}
-	*(this->_inventory) = *(src._inventory);
+		delete this->_inventory[i];
+	for(int i = 0; i < 3; ++i)
+		this->_inventory[i] = src._inventory[i]->clone();
+	for(int i = 0; i < 3; ++i)
+		*(this->_inventory[i]) = *(src._inventory[i]);
 }
 Character& Character::operator=(Character const & rhs) {
 	this->_name = rhs._name;
-	// this->_inventory = new AMateria[4];
-	*(this->_inventory) = *(rhs._inventory);
+	for(int i = 0; i < 3; ++i)
+		delete this->_inventory[i];
+	for(int i = 0; i < 3; ++i)
+		this->_inventory[i] = rhs._inventory[i]->clone();
+	for(int i = 0; i < 3; ++i)
+		*(this->_inventory[i]) = *(rhs._inventory[i]);
 	return *this;
 }
 
@@ -37,22 +39,26 @@ std::string const & Character::getName() const {
 	return this->_name;
 }
 void Character::equip(AMateria* m) {
+	int	i = 0;
+
 	if (m == NULL)
 		return ;
-	int	i = 0;
 	while (i < 4 && this->_inventory[i] != NULL)
 		i++;
 	if (i == 4)
 		return ;
-	this->_inventory[i] = m;
+	delete this->_inventory[i];
+	this->_inventory[i] = m->clone();
+	*(this->_inventory[i]) = *m;
 }
 void Character::unequip(int idx) {
 	if (idx < 0 || idx > 3)
 		return ;
-	this->_inventory[idx] = NULL;
+	delete this->_inventory[idx];
+	this->_inventory[idx] = new None();
 }
 void Character::use(int idx, ICharacter& target) {
-	if (idx < 0 || idx > 3 || this->_inventory[idx] == NULL)
+	if (idx < 0 || idx > 3)
 	{
 		std::cout << "This equipemnt is not in the invetory list" << std::endl;
 		return ;

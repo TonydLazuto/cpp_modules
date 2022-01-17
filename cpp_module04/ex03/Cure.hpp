@@ -11,8 +11,8 @@ class Cure : public AMateria
 		Cure(Cure const & src);
 		Cure& operator=(Cure const & rhs);
 
-		virtual AMateria* 	clone() const override;
-		// virtual void 		use(ICharacter const& target) override;
+		virtual AMateria* 	clone() const;
+		// virtual void 		use(ICharacter const& target);
 };
 
 #endif

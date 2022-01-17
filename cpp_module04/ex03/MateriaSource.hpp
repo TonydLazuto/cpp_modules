@@ -3,10 +3,14 @@
 
 # include "IMateriaSource.hpp"
 # include "AMateria.hpp"
+# include "None.hpp"
+
+class AMateria;
 
 class MateriaSource : public IMateriaSource
+{
 	protected:
-		AMateria	*_amateria[4];
+		AMateria	*_stock[4];
 
 	public:
 		
@@ -15,8 +19,8 @@ class MateriaSource : public IMateriaSource
 		MateriaSource(MateriaSource const & src);
 		MateriaSource& operator=(MateriaSource const & rhs);
 
-		virtual void 		learnMateria(AMateria*) override;
-		virtual AMateria* 	createMateria(std::string const & type) override;
+		virtual void 		learnMateria(AMateria*);
+		virtual AMateria* 	createMateria(std::string const & type);
 };
 
 #endif

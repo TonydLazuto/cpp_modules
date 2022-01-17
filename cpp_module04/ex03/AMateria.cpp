@@ -27,5 +27,5 @@ void 		AMateria::use(ICharacter const& target) {
 	else if (this->_type.compare("bolt") == 0)
 		std::cout << "* send a static shock to " << target.getName() << "*" << std::endl;
 	else
-		std::cout << "* NONE on " << target.getName() << "*" << std::endl;
+		std::cout << "* NONE *" << std::endl;
 }

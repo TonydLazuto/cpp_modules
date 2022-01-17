@@ -12,8 +12,12 @@ OBJ_DIR		=	obj
 
 SRCS		=	main.cpp \
 				Amateria.cpp \
-				Materia.cpp \
-				Character.cpp
+				Character.cpp \
+				Cure.cpp \
+				Ice.cpp \
+				MateriaSource.cpp \
+				None.cpp
+
 
 OBJS		=	$(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
 

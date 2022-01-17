@@ -1,29 +1,23 @@
 #include "AMateria.hpp"
 
-AMateria::Amateria(void) {
+AMateria::AMateria(void) {
 	std::cout << "Construct Amateria." << std::endl;
 }
-AMateria::AMateria(std::string const & type) : _type(type) {
-	std::cout << "Construct Amateria " << this->_type << std::endl;
+AMateria::~AMateria(void) {
+	std::cout << "Destruct Amateria." << std::endl;
 }
-AMateria::~Amateria(void) {
-	if (this->_type)
-		std::cout << "Destruct Amateria " << this->_type << std::endl;
-	else
-		std::cout << "Destruct Amateria." << std::endl;
-}
-AMateria::Amateria(AMateria const & src) {
+AMateria::AMateria(AMateria const & src) {
 	*this = src;
 }
 AMateria& AMateria::operator=(AMateria const & rhs) {
-	this->type = rhs.type;
+	this->_type = rhs._type;
 	return *this;
 }
 
 std::string const & AMateria::getType() const {
 	return this->_type;
 }
-virtual void 		AMateria::use(ICharacter const& target) override {
+void 		AMateria::use(ICharacter const& target) {
 	if (this->_type.compare("ice") == 0)
 		std::cout << "* shoots an ice bolt at " << target.getName() << "*" << std::endl;
 	else if (this->_type.compare("cure") == 0)
@@ -33,5 +27,5 @@ virtual void 		AMateria::use(ICharacter const& target) override {
 	else if (this->_type.compare("bolt") == 0)
 		std::cout << "* send a static shock to " << target.getName() << "*" << std::endl;
 	else
-		std::cout << "* NONE on " << target.getName() << "*" << std::endl;
+		std::cout << "* NONE *" << std::endl;
 }

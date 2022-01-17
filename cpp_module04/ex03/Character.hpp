@@ -2,14 +2,15 @@
 # define CHARACTER_HPP
 
 # include "AMateria.hpp"
-# include "ICharacter.hpp"
-#include <iostream>
+# include "None.hpp"
 
-class Character : public ICharacter, IAmate
+class AMateria;
+
+class Character : public ICharacter
 {
 	protected:
 		std::string	_name;
-		AMateria* 	_inventory;
+		AMateria* 	_inventory[4];
 
 	public:
 		Character( void );
@@ -19,10 +20,12 @@ class Character : public ICharacter, IAmate
 
 		Character( std::string name );
 
-		virtual std::string const&	getName() const override;
-		virtual void				equip(AMateria* m) override;
-		virtual void				unequip(int idx) override;
-		virtual void				use(int idx, ICharacter& target) override;
+		virtual std::string const& getName() const;
+		virtual void equip(AMateria* m);
+		virtual void unequip(int idx);
+		virtual void use(int idx, ICharacter& target);
+
+		virtual AMateria* 	clone() const;
 };
 
 #endif

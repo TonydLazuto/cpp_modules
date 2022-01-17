@@ -1,44 +1,67 @@
-#include "AMateria.hpp"
-#include "IAmateria.hpp"
 #include "Character.hpp"
 
-
-Character::Character( void ) : _name("Character"), _inventory(new AMateria[4]) {
+Character::Character( void ) : _name("Character") {
 	std::cout << "Construct Character " << this->_name << std::endl;
+	for(int i = 0; i < 3; ++i)
+		this->_inventory[i] = new None();
 }
-Character::Character( std::string name ) : _name(name), _inventory(new AMateria[4]) {
+Character::Character( std::string name ) : _name(name) {
 	std::cout << "Construct Character " << this->_name << std::endl;
+	for(int i = 0; i < 3; ++i)
+		this->_inventory[i] = new None();
 }
 Character::~Character( void ) {
 	std::cout << "Destruct Character " << this->_name << std::endl;
-	delete [] this->_inventory;
+	for(int i = 0; i < 3; ++i)
+		delete this->_inventory[i];
 }
 Character::Character(Character const & src) {
 	this->_name = src._name;
-	this->_inventory = new AMateria[4];
-	*(this->_inventory) = *(src._inventory);
+	for(int i = 0; i < 3; ++i)
+		delete this->_inventory[i];
+	for(int i = 0; i < 3; ++i)
+		this->_inventory[i] = src._inventory[i]->clone();
+	for(int i = 0; i < 3; ++i)
+		*(this->_inventory[i]) = *(src._inventory[i]);
 }
 Character& Character::operator=(Character const & rhs) {
-	this->_name = src._name;
-	this->_inventory = new AMateria[4];
-	*(this->_inventory) = *(src._inventory);
+	this->_name = rhs._name;
+	for(int i = 0; i < 3; ++i)
+		delete this->_inventory[i];
+	for(int i = 0; i < 3; ++i)
+		this->_inventory[i] = rhs._inventory[i]->clone();
+	for(int i = 0; i < 3; ++i)
+		*(this->_inventory[i]) = *(rhs._inventory[i]);
 	return *this;
 }
 
-virtual std::string const & Character::getName() const override {
+std::string const & Character::getName() const {
 	return this->_name;
 }
-virtual void Character::equip(AMateria* m) override {
-	
+void Character::equip(AMateria* m) {
+	int	i = 0;
+
+	if (m == NULL)
+		return ;
+	while (i < 4 && this->_inventory[i] != NULL)
+		i++;
+	if (i == 4)
+		return ;
+	delete this->_inventory[i];
+	this->_inventory[i] = m->clone();
+	*(this->_inventory[i]) = *m;
 }
-virtual void Character::unequip(int idx) override {
-	
+void Character::unequip(int idx) {
+	if (idx < 0 || idx > 3)
+		return ;
+	delete this->_inventory[idx];
+	this->_inventory[idx] = new None();
 }
-virtual void Character::use(int idx, ICharacter& target) override {
+void Character::use(int idx, ICharacter& target) {
 	if (idx < 0 || idx > 3)
 	{
 		std::cout << "This equipemnt is not in the invetory list" << std::endl;
 		return ;
 	}
-	this->_inventory[idx].use(target);
+	this->_inventory[idx]->use(target);
 }

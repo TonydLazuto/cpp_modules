@@ -1,9 +1,8 @@
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
+class ICharacter;
 # include "AMateria.hpp"
-
-class AMateria;
 
 class ICharacter
 {

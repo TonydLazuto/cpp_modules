@@ -2,35 +2,35 @@
 
 Character::Character( void ) : _name("Character") {
 	std::cout << "Construct Character " << this->_name << std::endl;
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		this->_inventory[i] = new None();
 }
 Character::Character( std::string name ) : _name(name) {
 	std::cout << "Construct Character " << this->_name << std::endl;
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		this->_inventory[i] = new None();
 }
 Character::~Character( void ) {
 	std::cout << "Destruct Character " << this->_name << std::endl;
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		delete this->_inventory[i];
 }
 Character::Character(Character const & src) {
 	this->_name = src._name;
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		delete this->_inventory[i];
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		this->_inventory[i] = src._inventory[i]->clone();
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		*(this->_inventory[i]) = *(src._inventory[i]);
 }
 Character& Character::operator=(Character const & rhs) {
 	this->_name = rhs._name;
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		delete this->_inventory[i];
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		this->_inventory[i] = rhs._inventory[i]->clone();
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		*(this->_inventory[i]) = *(rhs._inventory[i]);
 	return *this;
 }

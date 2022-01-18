@@ -15,6 +15,6 @@ Ice& Ice::operator=(Ice const & rhs) {
 	return *this;
 }
 
-AMateria*	AMateria::clone() const {
+AMateria*	Ice::clone() const {
 	return (new Ice);
 }

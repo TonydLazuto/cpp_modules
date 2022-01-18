@@ -15,6 +15,6 @@ None& None::operator=(None const & rhs) {
 	return *this;
 }
 
-AMateria*	AMateria::clone() const {
+AMateria*	None::clone() const {
 	return (new None);
 }

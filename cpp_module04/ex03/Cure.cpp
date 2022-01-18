@@ -15,6 +15,6 @@ Cure& Cure::operator=(Cure const & rhs) {
 	return *this;
 }
 
-AMateria*	AMateria::clone() const {
+AMateria*	Cure::clone() const {
 	return (new Cure);
 }

@@ -4,14 +4,14 @@ NAME		=	ex03
 
 CC			=	c++
 
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -pedantic -I.
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -I.
 
 RM			=	/bin/rm -f
 
 OBJ_DIR		=	obj
 
 SRCS		=	main.cpp \
-				Amateria.cpp \
+				AMateria.cpp \
 				Character.cpp \
 				Cure.cpp \
 				Ice.cpp \

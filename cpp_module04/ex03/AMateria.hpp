@@ -2,9 +2,8 @@
 # define AMATERIA_HPP
 
 # include <iostream>
+class AMateria;
 # include "ICharacter.hpp"
-
-class ICharacter;
 
 class AMateria
 {

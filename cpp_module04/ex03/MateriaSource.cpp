@@ -2,28 +2,28 @@
 
 MateriaSource::MateriaSource( void ) {
 	std::cout << "Construct MateriaSource." << std::endl;
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		this->_stock[i] = new None();
 }
 MateriaSource::~MateriaSource( void ) {
 	std::cout << "Destruct MateriaSource." << std::endl;
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		delete this->_stock[i];
 }
 MateriaSource::MateriaSource(MateriaSource const & src) {
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		delete this->_stock[i];
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		this->_stock[i] = src._stock[i]->clone();
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		*(this->_stock[i]) = *(src._stock[i]);
 }
 MateriaSource& MateriaSource::operator=(MateriaSource const & rhs) {
-		for(int i = 0; i < 3; ++i)
+		for(int i = 0; i < 4; ++i)
 		delete this->_stock[i];
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		this->_stock[i] = rhs._stock[i]->clone();
-	for(int i = 0; i < 3; ++i)
+	for(int i = 0; i < 4; ++i)
 		*(this->_stock[i]) = *(rhs._stock[i]);
 	return *this;
 }

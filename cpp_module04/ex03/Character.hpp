@@ -3,6 +3,8 @@
 
 # include "AMateria.hpp"
 # include "None.hpp"
+# include "Cure.hpp"
+# include "Ice.hpp"
 
 class AMateria;
 
@@ -25,7 +27,7 @@ class Character : public ICharacter
 		virtual void unequip(int idx);
 		virtual void use(int idx, ICharacter& target);
 
-		virtual AMateria* 	clone() const;
+		// virtual AMateria* 	clone() const;
 };
 
 #endif

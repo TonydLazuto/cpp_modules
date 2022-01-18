@@ -15,6 +15,9 @@ SRCS		=	main.cpp \
 				Character.cpp \
 				Cure.cpp \
 				Ice.cpp \
+				Spell.cpp \
+				Fire.cpp \
+				Bolt.cpp \
 				MateriaSource.cpp
 
 

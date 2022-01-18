@@ -3,7 +3,6 @@
 
 # include "IMateriaSource.hpp"
 # include "AMateria.hpp"
-# include "None.hpp"
 
 class AMateria;
 

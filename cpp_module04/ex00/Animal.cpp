@@ -1,6 +1,6 @@
 #include "Animal.hpp"
 
-Animal::Animal( void ) : _type("Animalname") {
+Animal::Animal( void ) : _type("Animal") {
 	std::cout << "Construct Animal." << std::endl;
 }
 Animal::Animal( std::string type ) : _type(type) {

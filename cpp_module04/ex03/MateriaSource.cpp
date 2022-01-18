@@ -51,6 +51,8 @@ void 		MateriaSource::learnMateria(AMateria* materia) {
 		i++;
 	if (i == 4)
 	{
+		delete materia;
+		materia = NULL;
 		std::cout << "Can't learn more Materia." << std::endl;
 		return ;
 	}

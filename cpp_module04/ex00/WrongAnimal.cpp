@@ -1,6 +1,6 @@
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal( void ) : _type("WrongAnimalname") {
+WrongAnimal::WrongAnimal( void ) : _type("WrongAnimal") {
 	std::cout << "Construct WrongAnimal." << std::endl;
 }
 WrongAnimal::WrongAnimal( std::string type ) : _type(type) {

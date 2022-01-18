@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat( void ) : Animal("Catname") {
+Cat::Cat( void ) : Animal("Persan") {
 	std::cout << "Construct Cat --> " << this->getType() << std::endl;
 }
 Cat::Cat( std::string type ) : Animal(type) {

@@ -2,9 +2,11 @@
 # define CHARACTER_HPP
 
 # include "AMateria.hpp"
-# include "None.hpp"
 # include "Cure.hpp"
 # include "Ice.hpp"
+# include "Bolt.hpp"
+# include "Fire.hpp"
+# include "Spell.hpp"
 
 class AMateria;
 

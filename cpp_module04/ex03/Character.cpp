@@ -91,7 +91,8 @@ void Character::use(int idx, ICharacter& target) {
 		std::cout << "This equipemnt is not in the invetory list" << std::endl;
 		return ;
 	}
-	this->_equip[idx]->use(target);
+	if (this->_equip[idx])
+		this->_equip[idx]->use(target);
 	delete this->_inventory[idx];
 	this->_inventory[idx] = NULL;
 }

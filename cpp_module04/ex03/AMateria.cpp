@@ -19,13 +19,15 @@ std::string const & AMateria::getType() const {
 }
 void 		AMateria::use(ICharacter const& target) {
 	if (this->_type.compare("ice") == 0)
-		std::cout << "* shoots an ice bolt at " << target.getName() << "*" << std::endl;
+		std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 	else if (this->_type.compare("cure") == 0)
 		std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 	else if (this->_type.compare("fire") == 0)
-		std::cout << "* spit fire on " << target.getName() << "*" << std::endl;
+		std::cout << "* spit fire on " << target.getName() << " *" << std::endl;
 	else if (this->_type.compare("bolt") == 0)
-		std::cout << "* send a static shock to " << target.getName() << "*" << std::endl;
+		std::cout << "* send a static shock to " << target.getName() << " *" << std::endl;
+	else if (this->_type.compare("spell") == 0)
+		std::cout << "* A spell has been launch to " << target.getName() << " *" << std::endl;
 	else
 		std::cout << "* NONE *" << std::endl;
 }

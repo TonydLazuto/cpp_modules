@@ -2,7 +2,7 @@
 
 Cure::Cure( void ) {
 	std::cout << "Construct Cure."<< std::endl;
-	this->_type = "Cure";
+	this->_type = "cure";
 }
 Cure::~Cure( void ) {
 	std::cout << "Destruct Cure." << std::endl;

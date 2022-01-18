@@ -13,6 +13,7 @@ class Character : public ICharacter
 	protected:
 		std::string	_name;
 		AMateria* 	_inventory[4];
+		AMateria* 	_equip[4];
 
 	public:
 		Character( void );
@@ -26,8 +27,6 @@ class Character : public ICharacter
 		virtual void equip(AMateria* m);
 		virtual void unequip(int idx);
 		virtual void use(int idx, ICharacter& target);
-
-		// virtual AMateria* 	clone() const;
 };
 
 #endif

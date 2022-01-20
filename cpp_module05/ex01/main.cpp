@@ -3,11 +3,6 @@
 
 int	main(void)
 {
-	Bureaucrat	a("a", 230);
-	Bureaucrat	b("b", -30);
-	std::cout << a << std::endl;
-	std::cout << b << std::endl << std::endl;
-
 	Bureaucrat	john("john", 30);
 	Bureaucrat	alex("alex", 140);
 	std::cout << john << std::endl;

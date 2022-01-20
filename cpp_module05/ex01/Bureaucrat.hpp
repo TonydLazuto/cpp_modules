@@ -3,12 +3,13 @@
 
 #include <iostream>
 #include <exception>
+class Bureaucrat;
 #include "Form.hpp"
 
 class Bureaucrat : public std::exception
 {
 	private:
-		std::string const	_name;
+		const std::string	_name;
 		int					_grade;
 
 	public:
@@ -42,7 +43,7 @@ class Bureaucrat : public std::exception
 		Bureaucrat( std::string type, int grade );
 
 
-		std::string const	getName(void) const;
+		const std::string	getName(void) const;
 		int					getGrade(void) const;
 		void				increaseGrade(int nb);
 		void				decreaseGrade(int nb);

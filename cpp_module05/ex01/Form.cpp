@@ -1,12 +1,14 @@
 #include "Form.hpp"
 
 Form::Form( void ) : _name("Form"), _sign(false)
-	, _grade_to_sign(100), _grade_to_exec(50)
+					, _grade_to_sign(100), _grade_to_exec(50)
 {
 	std::cout << "Construct Form " << this->_name << std::endl;
 }
-Form::Form( std::string name, const int grade_to_sign, const int grade_to_exec)
-	: _name(name), _sign(false), _grade_to_sign(grade_to_sign), _grade_to_exec(grade_to_exec)
+Form::Form( std::string name, const int grade_to_sign
+			, const int grade_to_exec)
+	: _name(name), _sign(false)
+	, _grade_to_sign(grade_to_sign), _grade_to_exec(grade_to_exec)
 {
 	std::cout << "Construct Form " << this->_name << std::endl;
 }
@@ -14,17 +16,18 @@ Form::~Form( void )
 {
 	std::cout << "Destruct Form." << std::endl;
 }
-Form::Form(Form const & src)
+Form::Form(Form const & src) : _grade_to_sign(src._grade_to_sign)
+								, _grade_to_exec(src._grade_to_exec)
 {
 	*this = src;
 }
 Form& Form::operator=(Form const & rhs)
 {
-	*this = rhs
+	*this = rhs;
 	return *this;
 }
 
-std::string const	Form::getName(void) const
+const std::string	Form::getName(void) const
 {
 	return this->_name;
 }
@@ -32,23 +35,25 @@ bool				Form::getSign(void) const
 {
 	return this->_sign;
 }
-int const			Form::getGradeToSign(void) const
+int					Form::getGradeToSign(void) const
 {
 	return this->_grade_to_sign;
 }
-int const			Form::getGradeToExec(void) const
+int					Form::getGradeToExec(void) const
 {
 	return this->_grade_to_exec;
 }
 
-void				Form::beSigned(Bureaucrat b)const
+void				Form::beSigned(Bureaucrat b)
 {
 	try
 	{
 		if (b.getGrade() > this->_grade_to_sign)
-			throw Form::GradeTooLowException(b, this->_name, this->_grade_to_sign);
+			throw Form::GradeTooLowException(b.getName()
+				, b.getGrade(), this->_name, this->_grade_to_sign);
 		else if (b.getGrade() <= this->_grade_to_exec)
-			throw Form::GradeTooHighException(b, this->_name, this->_grade_to_exec);
+			throw Form::GradeTooHighException(b.getName()
+				, b.getGrade(), this->_name, this->_grade_to_exec);
 		else
 			this->_sign = true;
 	}

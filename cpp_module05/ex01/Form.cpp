@@ -12,7 +12,7 @@ Form::Form( std::string name, const int grade_to_sign
 {
 	std::cout << "Construct Form " << this->_name << std::endl;
 }
-Form::~Form( void )
+Form::~Form( void ) throw()
 {
 	std::cout << "Destruct Form." << std::endl;
 }
@@ -44,24 +44,24 @@ int					Form::getGradeToExec(void) const
 	return this->_grade_to_exec;
 }
 
-void				Form::beSigned(Bureaucrat b)
+void				Form::beSigned(Bureaucrat& b)
 {
 	try
 	{
 		if (b.getGrade() > this->_grade_to_sign)
-			throw Form::GradeTooLowException(b.getName()
-				, b.getGrade(), this->_name, this->_grade_to_sign);
+			throw Form::GradeTooLowException();
 		else if (b.getGrade() <= this->_grade_to_exec)
-			throw Form::GradeTooHighException(b.getName()
-				, b.getGrade(), this->_name, this->_grade_to_exec);
+			throw Form::GradeTooHighException();
 		else
+		{
 			this->_sign = true;
+		}
 	}
-	catch(Bureaucrat::GradeTooLowException& e)
+	catch(Form::GradeTooLowException& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	catch(Bureaucrat::GradeTooHighException& e)
+	catch(Form::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
@@ -69,10 +69,11 @@ void				Form::beSigned(Bureaucrat b)
 
 std::ostream&	operator<<(std::ostream& o, Form const & rhs)
 {
-	o << "Form" << std::endl \
-	<< "Name : " << rhs.getName() \
-	<< "Sign : " << rhs.getSign() \
-	<< "Grade to sign : " << rhs.getGradeToSign() \
-	<< "Grade to exec : " << rhs.getGradeToExec();
+	o << std::endl << "\t/---| Begin Form |---\\" << std::endl \
+	<< "Name : " << rhs.getName() << std::endl \
+	<< "Sign : " << rhs.getSign() << std::endl \
+	<< "Grade to sign : " << rhs.getGradeToSign() << std::endl \
+	<< "Grade to exec : " << rhs.getGradeToExec() << std::endl \
+	<< "\t/---| End Form |---\\";
 	return o;
 }

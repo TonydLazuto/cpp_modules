@@ -5,7 +5,7 @@
 class Form;
 #include "Bureaucrat.hpp"
 
-class Form
+class Form : public std::exception
 {
 	private:
 		const std::string	_name;
@@ -16,65 +16,36 @@ class Form
 	public:
 		class GradeTooLowException
 		{
-			private:
-				const std::string	_b_name;
-				int					_b_grade;
-				const std::string	_form_name;
-				const int			_grade_to_sign;
 			public:
-				// GradeTooLowException ( void ) throw()
-				// : _b_name(NULL), _b_grade(150) 
-				// 	,_form_name("Default"), _grade_to_sign(100) {}
-				GradeTooLowException( const std::string b_name, int b_grade
-					, const std::string form_name, const int grade_to_sign ) throw()
-				: _b_name(b_name), _b_grade(b_grade) 
-					, _form_name(form_name), _grade_to_sign(grade_to_sign) {}
-				virtual ~GradeTooLowException( void ) throw() {}
+				GradeTooLowException( void ) throw() {
+					std::cout << "Construct GradeTooLowException" << std::endl;
+				}
+				virtual ~GradeTooLowException( void ) throw() {
+					std::cout << "Destruct GradeTooLowException" << std::endl;
+				}
 				virtual const char* what() const throw()
 				{
-					std::string s = this->_b_name;
-					s += " cannot sign because his grade : ";
-					s += this->_b_grade;
-					s += ". And the form ";
-					s += this->_form_name;
-					s += " required grade(to_sign) -> ";
-					s += this->_grade_to_sign;
-					const char *msg = &*s.begin();
-					return msg;
+					return "Exception: Bureaucrat Grade is to low to sign this form.";
 				}
 
 		};
 		class GradeTooHighException
 		{
-			private:
-				const std::string	_b_name;
-				int					_b_grade;
-				const std::string	_form_name;
-				const int			_grade_to_exec;
 			public:
-				// GradeTooHighException ( void ) throw()
-				// : _b_name(NULL), _b_grade(150) 
-				// 	,_form_name("Default"), _grade_to_sign(100) {}
-				GradeTooHighException( const std::string b_name, int b_grade
-					, const std::string form_name, const int grade_to_exec ) throw()
-				: _b_name(b_name), _b_grade(b_grade)
-					, _form_name(form_name), _grade_to_exec(grade_to_exec) {}
-				virtual ~GradeTooHighException( void ) throw() {}
+				GradeTooHighException( void ) throw() {
+					std::cout << "Construct GradeTooHighException" << std::endl;
+				}
+				virtual ~GradeTooHighException( void ) throw() {
+					std::cout << "Destruct GradeTooHighException" << std::endl;
+				}
 				virtual const char* what() const throw()
 				{
-					std::string s = this->_b_name;
-					s += " cannot sign because his grade : ";
-					s += this->_b_grade;
-					s += ". And the form ";
-					s += this->_form_name;
-					s += " maximum grade(to_exec) -> ";
-					s += this->_grade_to_exec;
-					const char *msg = &*s.begin();
-					return msg;
+					return "Exception: Bureaucrat Grade is to high to sign this form.";
 				}
+
 		};
 		Form( void );
-		virtual ~Form( void );
+		virtual ~Form( void ) throw();
 		Form(Form const & src);
 		Form& operator=(Form const & rhs);
 
@@ -85,7 +56,7 @@ class Form
 		int					getGradeToSign(void) const;
 		int					getGradeToExec(void) const;
 		
-		void				beSigned(Bureaucrat b);
+		void				beSigned(Bureaucrat& b);
 
 		
 };

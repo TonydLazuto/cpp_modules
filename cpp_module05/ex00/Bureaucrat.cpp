@@ -38,7 +38,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const & src)
 }
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const & rhs)
 {
-	*this = rhs;
+	this->_grade = rhs._grade;
 	return *this;
 }
 

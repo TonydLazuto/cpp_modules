@@ -48,7 +48,7 @@ class Bureaucrat : public std::exception
 		void				increaseGrade(int nb);
 		void				decreaseGrade(int nb);
 
-		void				signForm(Form f);
+		void				signForm(Form& f);
 
 		
 };

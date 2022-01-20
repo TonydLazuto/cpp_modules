@@ -63,8 +63,6 @@ void				Form::launchExecute(Bureaucrat const & executor) const
 
 	if (!this->_sign || executor.getGrade() > my_form->_grade_to_exec)
 		throw Form::GradeTooLowToExecException(my_form);
-	std::cout << "<" << executor.getName() \
-		<< "> executs <" << this->_name << ">";
 	my_form->execute(executor);
 	delete my_form;
 }

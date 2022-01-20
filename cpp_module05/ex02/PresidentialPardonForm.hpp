@@ -2,12 +2,12 @@
 # define PRESIDENTIALPARDONFORM_HPP
 
 #include <iostream>
-class PresidentialPardonForm;
 #include <Form.hpp>
 
-class PresidentialPardonForm
+class PresidentialPardonForm : public Form
 {
 	private:
+		std::string		_name;
 		std::string		_target;
 		const int		_grade_to_sign;
 		const int		_grade_to_exec;
@@ -22,6 +22,9 @@ class PresidentialPardonForm
 
 		virtual void	execute(Bureaucrat const & executor) const;
 		virtual Form*	clone(void) const;
+
+		int				getGradeToSign(void) const;
+		int				getGradeToExec(void) const;
 };
 
 #endif

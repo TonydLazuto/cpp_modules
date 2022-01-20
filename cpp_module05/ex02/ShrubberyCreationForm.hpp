@@ -2,12 +2,12 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 #include <iostream>
-class ShrubberyCreationForm;
 #include <Form.hpp>
 
 class ShrubberyCreationForm : public Form
 {
 	private:
+		std::string		_name;
 		std::string		_target;
 		const int		_grade_to_sign;
 		const int		_grade_to_exec;
@@ -24,6 +24,9 @@ class ShrubberyCreationForm : public Form
 
 		virtual void	execute(Bureaucrat const & executor) const;
 		virtual Form*	clone(void) const;
+		
+		int				getGradeToSign(void) const;
+		int				getGradeToExec(void) const;
 };
 
 #endif

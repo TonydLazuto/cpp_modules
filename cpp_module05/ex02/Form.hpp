@@ -70,8 +70,8 @@ class Form
 
 		const std::string	getName(void) const;
 		bool				getSign(void) const;
-		int					getGradeToSign(void) const;
-		int					getGradeToExec(void) const;
+		virtual int			getGradeToSign(void) const;
+		virtual int			getGradeToExec(void) const;
 
 		void				beSigned(Bureaucrat& b);
 		void				launchExecute(Bureaucrat const & executor) const;

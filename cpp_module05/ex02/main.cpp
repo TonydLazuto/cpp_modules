@@ -23,15 +23,15 @@ int	main(void)
 		// alex.decreaseGrade(10);
 		// std::cout << alex << std::endl << std::endl;
 
-		Form *form1 = new ShrubberyCreationForm();
+		Form *form1 = new RobotomyRequestForm();
 		std::cout << *form1 << std::endl;
 		std::cout << john << std::endl;
 		john.signForm(*form1);
-		std::cout << *form1 << std::endl;
-		john.decreaseGrade(50);
-		john.signForm(*form1);
-		std::cout << john << std::endl;
-		std::cout << *form1 << std::endl;
+		// std::cout << *form1 << std::endl;
+		// john.decreaseGrade(50);
+		// john.signForm(*form1);
+		// std::cout << john << std::endl;
+		// std::cout << *form1 << std::endl;
 		john.executeForm(*form1);
 
 		delete form1;

@@ -3,12 +3,12 @@
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm( void )
-	: _target("Default"), _grade_to_sign(145), _grade_to_exec(137)
+	: _name("ShrubberyCreationForm"), _target("Default"), _grade_to_sign(145), _grade_to_exec(137)
 {
 	std::cout << "Construct ShrubberyCreationForm " << std::endl;
 }
 ShrubberyCreationForm::ShrubberyCreationForm( std::string target )
-	: _target(target), _grade_to_sign(145), _grade_to_exec(137)
+	: _name("ShrubberyCreationForm"), _target(target), _grade_to_sign(145), _grade_to_exec(137)
 {
 	std::cout << "Construct ShrubberyCreationForm " << std::endl;
 }
@@ -27,6 +27,15 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 	return *this;
 }
 
+int				ShrubberyCreationForm::getGradeToSign(void) const
+{
+	return this->_grade_to_sign;
+}
+int				ShrubberyCreationForm::getGradeToExec(void) const
+{
+	return this->_grade_to_exec;
+}
+
 Form*			ShrubberyCreationForm::clone(void) const
 {
 	return (new ShrubberyCreationForm());
@@ -39,6 +48,8 @@ std::string		ShrubberyCreationForm::buildMyTree(void)
 
 void			ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
+	std::cout << "<" << executor.getName() \
+		<< "> executs <" << this->_name << ">" << std::endl;
 	std::string	filename = this->_target;
 	filename += "_shrubbery";
 	std::ofstream ofs(filename.c_str(), std::ios_base::out | std::ios_base::trunc);

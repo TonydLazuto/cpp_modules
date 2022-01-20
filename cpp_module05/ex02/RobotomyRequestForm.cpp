@@ -1,12 +1,12 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm( void )
-	: _target("Default"), _grade_to_sign(72), _grade_to_exec(45)
+	: _name("RobotomyRequestForm"), _target("Default"), _grade_to_sign(72), _grade_to_exec(45)
 {
 	std::cout << "Construct RobotomyRequestForm " << std::endl;
 }
 RobotomyRequestForm::RobotomyRequestForm( std::string target )
-	: _target(target), _grade_to_sign(72), _grade_to_exec(45)
+	: _name("RobotomyRequestForm"), _target(target), _grade_to_sign(72), _grade_to_exec(45)
 {
 	std::cout << "Construct RobotomyRequestForm " << std::endl;
 }
@@ -25,6 +25,15 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const & 
 	return *this;
 }
 
+int				RobotomyRequestForm::getGradeToSign(void) const
+{
+	return this->_grade_to_sign;
+}
+int				RobotomyRequestForm::getGradeToExec(void) const
+{
+	return this->_grade_to_exec;
+}
+
 Form*			RobotomyRequestForm::clone(void) const
 {
 	return (new RobotomyRequestForm());
@@ -34,12 +43,13 @@ int				RobotomyRequestForm::_count = 0;
 
 void			RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
+	std::cout << "<" << executor.getName() \
+		<< "> executs <" << this->_name << ">" << std::endl;
 	if (RobotomyRequestForm::_count % 2)
 		std::cout << "Brrrrrrrrrrrr *Drill noises* <" \
 			<< this->_target << "> has been totally crushed." << std::endl;
 	else
 		std::cout << "Fail while try to cruh <" \
 			<< this->_target << ">." << std::endl;
-
 	RobotomyRequestForm::_count++;
 }

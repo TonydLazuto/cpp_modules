@@ -9,20 +9,20 @@ class RobotomyRequestForm
 {
 	private:
 		std::string		_target;
-		const int		_grade_to_sign = 72;
-		const int		_grade_to_exec = 45;
+		const int		_grade_to_sign;
+		const int		_grade_to_exec;
 		static int		_count;
 
 	public:
 		RobotomyRequestForm( void );
-		virtual ~RobotomyRequestForm( void );
+		virtual ~RobotomyRequestForm( void ) throw ();
 		RobotomyRequestForm(RobotomyRequestForm const & src);
 		RobotomyRequestForm& operator=(RobotomyRequestForm const & rhs);
 
 		RobotomyRequestForm( std::string type );
 
 		virtual void	execute(Bureaucrat const & executor) const;
-		virtual Form*	clone(void);
+		virtual Form*	clone(void) const;
 };
 
 #endif

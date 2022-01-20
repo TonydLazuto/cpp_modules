@@ -1,21 +1,23 @@
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm( void )
+	: _target("Default"), _grade_to_sign(72), _grade_to_exec(45)
 {
 	std::cout << "Construct RobotomyRequestForm " << std::endl;
 }
 RobotomyRequestForm::RobotomyRequestForm( std::string target )
-	: _target(target)
+	: _target(target), _grade_to_sign(72), _grade_to_exec(45)
 {
 	std::cout << "Construct RobotomyRequestForm " << std::endl;
 }
-RobotomyRequestForm::~RobotomyRequestForm( void )
+RobotomyRequestForm::~RobotomyRequestForm( void ) throw ()
 {
 	std::cout << "Destruct RobotomyRequestForm." << std::endl;
 }
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src)
+	: _grade_to_sign(72), _grade_to_exec(45)
 {
-	*this = src;
+	(std::string)this->_target = (std::string)src._target;*this = src;
 }
 RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const & rhs)
 {
@@ -23,7 +25,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const & 
 	return *this;
 }
 
-Form*			RobotomyRequestForm::clone(void)
+Form*			RobotomyRequestForm::clone(void) const
 {
 	return (new RobotomyRequestForm());
 }

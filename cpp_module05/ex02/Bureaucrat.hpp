@@ -3,36 +3,41 @@
 
 #include <iostream>
 #include <exception>
-class Bureaucrat;
 #include "Form.hpp"
 
-class Bureaucrat : public std::exception
+class Form;
+
+class Bureaucrat
 {
 	private:
 		const std::string	_name;
 		int					_grade;
 
+		static void			checkBureaucrat(int grade);
+
 	public:
 
-		class GradeTooLowException
+		class GradeTooLowException : public std::exception
 		{
 			public:
 				GradeTooLowException( void ) throw() {}
 				virtual ~GradeTooLowException( void ) throw() {}
 				virtual const char* what() const throw()
 				{
-					return "The grade try to be more than 150 which is too low!";
+					return "<bureaucrat> cannot sign because is grade \
+						is more than grade_to_sign which is too low!";
 				}
 
 		};
-		class GradeTooHighException
+		class GradeTooHighException : public std::exception
 		{
 			public:
 				GradeTooHighException( void ) throw() {}
 				virtual ~GradeTooHighException( void ) throw() {}
 				virtual const char* what() const throw()
 				{
-					return "The grade try to be more than 150 which is too low!";
+					return "<bureaucrat> cannot sign because is grade \
+						is less than grade_to_sign which is too low!";
 				}
 		};
 		Bureaucrat( void );

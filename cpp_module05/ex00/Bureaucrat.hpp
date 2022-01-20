@@ -11,7 +11,6 @@ class Bureaucrat
 		int					_grade;
 
 		static void			checkBureaucrat(int grade);
-		static void			catchOverGrade(void);
 
 	public:
 

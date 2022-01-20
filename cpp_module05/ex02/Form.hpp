@@ -2,10 +2,12 @@
 # define FORM_HPP
 
 #include <iostream>
-class Form;
+#include <exception>
 #include "Bureaucrat.hpp"
 
-class Form : public std::exception
+class Bureaucrat;
+
+class Form
 {
 	private:
 		const std::string	_name;
@@ -14,7 +16,7 @@ class Form : public std::exception
 		const int			_grade_to_exec;
 
 	public:
-		class GradeTooLowException
+		class GradeTooLowException : public std::exception
 		{
 			private:
 				Form*	_f;
@@ -27,22 +29,22 @@ class Form : public std::exception
 				}
 				virtual const char* what() const throw()
 				{
-					return "Exception: Bureaucrat Grade is to low to sign this form.";
+					return "<bureaucrat> cannot sign because Grade is to low to sign this form.";
 				}
 
 		};
-		class GradeTooHighException
+		class GradeTooHighException : public std::exception
 		{
 			public:
 				GradeTooHighException( void ) throw() {}
 				virtual ~GradeTooHighException( void ) throw() {}
 				virtual const char* what() const throw()
 				{
-					return "Exception: Bureaucrat Grade is to high to sign this form.";
+					return "<bureaucrat> cannot sign because Grade is to high to sign this form.";
 				}
 
 		};
-		class GradeTooLowToExecException
+		class GradeTooLowToExecException : public std::exception
 		{
 			private:
 				Form*	_f;
@@ -55,7 +57,7 @@ class Form : public std::exception
 				}
 				virtual const char* what() const throw()
 				{
-					return "Exception: Bureaucrat Grade is to low to exec this form.";
+					return "<bureaucrat> cannot sign because Grade is to low to exec this form.";
 				}
 
 		};
@@ -72,9 +74,9 @@ class Form : public std::exception
 		int					getGradeToExec(void) const;
 
 		void				beSigned(Bureaucrat& b);
-		void				launchExecute(Bureaucrat const & executor);
+		void				launchExecute(Bureaucrat const & executor) const;
 
-		virtual Form		*clone(void) = 0;
+		virtual Form		*clone(void) const = 0;
 		virtual void		execute(Bureaucrat const & executor) const = 0;
 };
 

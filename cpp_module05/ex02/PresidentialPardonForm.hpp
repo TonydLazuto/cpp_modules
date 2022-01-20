@@ -9,19 +9,19 @@ class PresidentialPardonForm
 {
 	private:
 		std::string		_target;
-		const int		_grade_to_sign = 25;
-		const int		_grade_to_exec = 5;
+		const int		_grade_to_sign;
+		const int		_grade_to_exec;
 
 	public:
 		PresidentialPardonForm( void );
-		virtual ~PresidentialPardonForm( void );
+		virtual ~PresidentialPardonForm( void ) throw ();
 		PresidentialPardonForm(PresidentialPardonForm const & src);
 		PresidentialPardonForm& operator=(PresidentialPardonForm const & rhs);
 
 		PresidentialPardonForm( std::string type );
 
 		virtual void	execute(Bureaucrat const & executor) const;
-		virtual Form*	clone(void);
+		virtual Form*	clone(void) const;
 };
 
 #endif

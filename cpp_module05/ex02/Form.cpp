@@ -47,42 +47,26 @@ int					Form::getGradeToExec(void) const
 
 void				Form::beSigned(Bureaucrat& b)
 {
-	try
-	{
-		Form *my_form = this->clone();
-		
-		if (b.getGrade() > my_form->_grade_to_sign)
-			throw Form::GradeTooLowException(my_form);
-		else
-		{
-			this->_sign = true;
-			delete my_form;
-		}
-	}
-	catch(Form::GradeTooLowException& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	if (b.getGrade() > this->_grade_to_sign)
+		throw Form::GradeTooLowException();
+	if (b.getGrade() < 1)
+		throw Form::GradeTooHighException();
+	this->_sign = true;
+	std::cout << "<" << b.getName() << "> signs " \
+		<< this->_name << std::endl;
+	
 }
 
-void				Form::launchExecute(Bureaucrat const & executor)
+void				Form::launchExecute(Bureaucrat const & executor) const
 {
-	try
-	{
-		Form *my_form = this->clone();
+	Form *my_form = this->clone();
 
-		if (!this->_sign || executor.getGrade() > my_form->_grade_to_exec)
-			throw Form::GradeTooLowToExecException(my_form);
-		else
-		{
-			my_form->execute(executor);
-			delete my_form;
-		}
-	}
-	catch(Form::GradeTooLowToExecException& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	if (!this->_sign || executor.getGrade() > my_form->_grade_to_exec)
+		throw Form::GradeTooLowToExecException(my_form);
+	std::cout << "<" << executor.getName() \
+		<< "> executs <" << this->_name << ">";
+	my_form->execute(executor);
+	delete my_form;
 }
 
 std::ostream&	operator<<(std::ostream& o, Form const & rhs)

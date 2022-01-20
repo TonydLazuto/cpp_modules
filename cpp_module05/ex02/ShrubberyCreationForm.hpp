@@ -9,21 +9,21 @@ class ShrubberyCreationForm : public Form
 {
 	private:
 		std::string		_target;
-		const int		_grade_to_sign = 145;
-		const int		_grade_to_exec = 137;
+		const int		_grade_to_sign;
+		const int		_grade_to_exec;
 
 		static std::string		buildMyTree(void);
 		
 	public:
 		ShrubberyCreationForm( void );
-		virtual ~ShrubberyCreationForm( void );
+		virtual ~ShrubberyCreationForm( void ) throw ();
 		ShrubberyCreationForm(ShrubberyCreationForm const & src);
 		ShrubberyCreationForm& operator=(ShrubberyCreationForm const & rhs);
 
 		ShrubberyCreationForm( std::string target );
 
 		virtual void	execute(Bureaucrat const & executor) const;
-		virtual Form*	clone(void);
+		virtual Form*	clone(void) const;
 };
 
 #endif

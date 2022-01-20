@@ -2,10 +2,12 @@
 # define FORM_HPP
 
 #include <iostream>
-class Form;
+#include <exception>
 #include "Bureaucrat.hpp"
 
-class Form : public std::exception
+class Bureaucrat;
+
+class Form
 {
 	private:
 		const std::string	_name;
@@ -14,30 +16,22 @@ class Form : public std::exception
 		const int			_grade_to_exec;
 
 	public:
-		class GradeTooLowException
+		class GradeTooLowException : public std::exception
 		{
 			public:
-				GradeTooLowException( void ) throw() {
-					std::cout << "Construct GradeTooLowException" << std::endl;
-				}
-				virtual ~GradeTooLowException( void ) throw() {
-					std::cout << "Destruct GradeTooLowException" << std::endl;
-				}
+				GradeTooLowException( void ) throw() {}
+				virtual ~GradeTooLowException( void ) throw() {}
 				virtual const char* what() const throw()
 				{
 					return "Exception: Bureaucrat Grade is to low to sign this form.";
 				}
 
 		};
-		class GradeTooHighException
+		class GradeTooHighException : public std::exception
 		{
 			public:
-				GradeTooHighException( void ) throw() {
-					std::cout << "Construct GradeTooHighException" << std::endl;
-				}
-				virtual ~GradeTooHighException( void ) throw() {
-					std::cout << "Destruct GradeTooHighException" << std::endl;
-				}
+				GradeTooHighException( void ) throw() {}
+				virtual ~GradeTooHighException( void ) throw() {}
 				virtual const char* what() const throw()
 				{
 					return "Exception: Bureaucrat Grade is to high to sign this form.";

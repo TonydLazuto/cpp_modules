@@ -47,24 +47,15 @@ int					Form::getGradeToExec(void) const
 
 void				Form::beSigned(Bureaucrat& b)
 {
-	try
+	if (b.getGrade() > this->_grade_to_sign)
+		throw Form::GradeTooLowException();
+	else if (b.getGrade() < 1)
+		throw Form::GradeTooHighException();
+	else
 	{
-		if (b.getGrade() > this->_grade_to_sign)
-			throw Form::GradeTooLowException();
-		else if (b.getGrade() <= this->_grade_to_exec)
-			throw Form::GradeTooHighException();
-		else
-		{
-			this->_sign = true;
-		}
-	}
-	catch(Form::GradeTooLowException& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	catch(Form::GradeTooHighException& e)
-	{
-		std::cerr << e.what() << std::endl;
+		this->_sign = true;
+		std::cout << "<" << b.getName() << "> signs " \
+			<< this->_name << std::endl;
 	}
 }
 

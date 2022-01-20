@@ -71,7 +71,7 @@ class Form : public std::exception
 		int					getGradeToSign(void) const;
 		int					getGradeToExec(void) const;
 
-		virtual void		beSigned(Bureaucrat& b);
+		void				beSigned(Bureaucrat& b);
 		void				launchExecute(Bureaucrat const & executor);
 
 		virtual Form		*clone(void) = 0;

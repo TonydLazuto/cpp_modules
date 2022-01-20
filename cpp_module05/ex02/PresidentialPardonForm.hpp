@@ -20,8 +20,8 @@ class PresidentialPardonForm
 
 		PresidentialPardonForm( std::string type );
 
-		void			pardon(void);
 		virtual void	execute(Bureaucrat const & executor) const;
+		virtual Form*	clone(void);
 };
 
 #endif

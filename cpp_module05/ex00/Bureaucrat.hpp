@@ -4,15 +4,18 @@
 #include <iostream>
 #include <exception>
 
-class Bureaucrat : public std::exception
+class Bureaucrat
 {
 	private:
 		std::string const	_name;
 		int					_grade;
 
+		static void			checkBureaucrat(int grade);
+		static void			catchOverGrade(void);
+
 	public:
 
-		class GradeTooLowException
+		class GradeTooLowException : public std::exception
 		{
 			public:
 				GradeTooLowException( void ) throw() {}
@@ -23,14 +26,14 @@ class Bureaucrat : public std::exception
 				}
 
 		};
-		class GradeTooHighException
+		class GradeTooHighException : public std::exception
 		{
 			public:
 				GradeTooHighException( void ) throw() {}
 				virtual ~GradeTooHighException( void ) throw() {}
 				virtual const char* what() const throw()
 				{
-					return "The grade try to be more than 150 which is too low!";
+					return "The grade try to be less than 1 which is too low!";
 				}
 		};
 		Bureaucrat( void );

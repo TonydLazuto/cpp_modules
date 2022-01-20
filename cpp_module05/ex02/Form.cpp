@@ -49,7 +49,7 @@ void				Form::beSigned(Bureaucrat& b)
 {
 	try
 	{
-		Form *my_form = this->clone(); //throw my_form to delete
+		Form *my_form = this->clone();
 		
 		if (b.getGrade() > my_form->_grade_to_sign)
 			throw Form::GradeTooLowException(my_form);

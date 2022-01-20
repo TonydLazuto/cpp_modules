@@ -12,7 +12,7 @@ class ShrubberyCreationForm : public Form
 		const int		_grade_to_sign = 145;
 		const int		_grade_to_exec = 137;
 
-		std::string		buildMyTree(void);
+		static std::string		buildMyTree(void);
 		
 	public:
 		ShrubberyCreationForm( void );

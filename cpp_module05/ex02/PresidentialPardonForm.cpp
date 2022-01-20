@@ -2,11 +2,12 @@
 
 PresidentialPardonForm::PresidentialPardonForm( void )
 {
-	std::cout << "Construct PresidentialPardonForm " << this->_name << std::endl;
+	std::cout << "Construct PresidentialPardonForm " << std::endl;
 }
-PresidentialPardonForm::PresidentialPardonForm( std::string name ) : _name(name)
+PresidentialPardonForm::PresidentialPardonForm( std::string target )
+	: _target(target)
 {
-	std::cout << "Construct PresidentialPardonForm " << this->_name << std::endl;
+	std::cout << "Construct PresidentialPardonForm " << std::endl;
 }
 PresidentialPardonForm::~PresidentialPardonForm( void )
 {
@@ -18,7 +19,17 @@ PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & sr
 }
 PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm const & rhs)
 {
-	this->_name = rhs._name;
+	(std::string)this->_target = (std::string)rhs._target;
 	return *this;
 }
 
+Form*			PresidentialPardonForm::clone(void)
+{
+	return (new PresidentialPardonForm());
+}
+
+void			PresidentialPardonForm::execute(Bureaucrat const & executor) const
+{
+	std::cout << "<" << this->_target \
+			<< "> get Zafod Beeblebrox forgiveness." << std::endl;
+}

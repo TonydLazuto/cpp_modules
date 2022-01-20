@@ -21,25 +21,26 @@ int	main(void)
 	Form form1;
 	std::cout << form1 << std::endl;
 	std::cout << john << std::endl;
-	form1.beSigned(john);
-	std::cout << form1 << std::endl;
+	// form1.beSigned(john);
 	john.signForm(form1);
-	john.decreaseGrade(50);
-	form1.beSigned(john);
+	std::cout << form1 << std::endl;
+	// john.signForm(form1);
+	john.decreaseGrade(100);
+	// form1.beSigned(john);
 	john.signForm(form1);
 	std::cout << john << std::endl;
 	std::cout << form1 << std::endl;
 	
-	Form form2;
-	std::cout << alex << std::endl;
-	form2.beSigned(alex);
-	std::cout << form2 << std::endl;
-	alex.signForm(form2);
-	alex.increaseGrade(80);
-	form2.beSigned(alex);
-	alex.signForm(form2);
-	std::cout << alex << std::endl;
-	std::cout << form2 << std::endl;
+	// Form form2;
+	// std::cout << alex << std::endl;
+	// form2.beSigned(alex);
+	// std::cout << form2 << std::endl;
+	// alex.signForm(form2);
+	// alex.increaseGrade(80);
+	// form2.beSigned(alex);
+	// alex.signForm(form2);
+	// std::cout << alex << std::endl;
+	// std::cout << form2 << std::endl;
 	
 
 	return 0;

@@ -11,6 +11,7 @@ class RobotomyRequestForm
 		std::string		_target;
 		const int		_grade_to_sign = 72;
 		const int		_grade_to_exec = 45;
+		static int		_count;
 
 	public:
 		RobotomyRequestForm( void );
@@ -20,8 +21,8 @@ class RobotomyRequestForm
 
 		RobotomyRequestForm( std::string type );
 
-		void			drillNoise(void);
 		virtual void	execute(Bureaucrat const & executor) const;
+		virtual Form*	clone(void);
 };
 
 #endif

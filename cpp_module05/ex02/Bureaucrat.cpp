@@ -102,4 +102,3 @@ std::ostream&	operator<<(std::ostream& o, Bureaucrat const & rhs)
 	o << "<" << rhs.getName() << ">, bureaucrat grade <" << rhs.getGrade() << ">";
 	return o;
 }
-

@@ -49,20 +49,37 @@ void				Form::beSigned(Bureaucrat& b)
 {
 	try
 	{
-		if (b.getGrade() > this->_grade_to_sign)
-			throw Form::GradeTooLowException();
-		else if (b.getGrade() <= this->_grade_to_exec)
-			throw Form::GradeTooHighException();
+		Form *my_form = this->clone(); //throw my_form to delete
+		
+		if (b.getGrade() > my_form->_grade_to_sign)
+			throw Form::GradeTooLowException(my_form);
 		else
 		{
 			this->_sign = true;
+			delete my_form;
 		}
 	}
 	catch(Form::GradeTooLowException& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	catch(Form::GradeTooHighException& e)
+}
+
+void				Form::launchExecute(Bureaucrat const & executor)
+{
+	try
+	{
+		Form *my_form = this->clone();
+
+		if (!this->_sign || executor.getGrade() > my_form->_grade_to_exec)
+			throw Form::GradeTooLowToExecException(my_form);
+		else
+		{
+			my_form->execute(executor);
+			delete my_form;
+		}
+	}
+	catch(Form::GradeTooLowToExecException& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}

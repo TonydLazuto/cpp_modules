@@ -43,7 +43,7 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat const & rhs)
 	return *this;
 }
 
-std::string const	Bureaucrat::getName(void) const
+const std::string	Bureaucrat::getName(void) const
 {
 	return this->_name;
 }
@@ -80,8 +80,26 @@ void				Bureaucrat::decreaseGrade(int nb)
 	}
 }
 
+void				Bureaucrat::signForm(Form& f)
+{
+	if (f.getSign())
+		std::cout << "<" << this->_name << "> signs " \
+				<< f.getName() << std::endl;
+	else
+		std::cout << "<" << this->_name << "> cannot sign because his grade <" \
+				<< this->_grade << "> is not between <" << f.getGradeToSign() \
+				<< "> and <" << f.getGradeToExec() << "> !" << std::endl;
+
+}
+
+void			Bureaucrat::executeForm(Form const & form)
+{
+
+}
+
 std::ostream&	operator<<(std::ostream& o, Bureaucrat const & rhs)
 {
 	o << "<" << rhs.getName() << ">, bureaucrat grade <" << rhs.getGrade() << ">";
 	return o;
 }
+

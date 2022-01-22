@@ -43,7 +43,10 @@ int	main(void)
 		// alex.signForm(form2);
 		// std::cout << alex << std::endl;
 		// std::cout << form2 << std::endl;
-		}
+
+		Intern someRandomIntern;
+		Form* rrf;
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';

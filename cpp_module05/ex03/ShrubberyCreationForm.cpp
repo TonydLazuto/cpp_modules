@@ -3,50 +3,42 @@
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm( void )
-	: _name("ShrubberyCreationForm"), _target("Default"), _grade_to_sign(145), _grade_to_exec(137)
-{
-	std::cout << "Construct ShrubberyCreationForm " << std::endl;
-}
+	: _name("ShrubberyCreationForm"), _target("Default"), _grade_to_sign(145), _grade_to_exec(137) {}
 ShrubberyCreationForm::ShrubberyCreationForm( std::string target )
-	: _name("ShrubberyCreationForm"), _target(target), _grade_to_sign(145), _grade_to_exec(137)
-{
-	std::cout << "Construct ShrubberyCreationForm " << std::endl;
-}
-ShrubberyCreationForm::~ShrubberyCreationForm( void ) throw ()
-{
-	std::cout << "Destruct ShrubberyCreationForm." << std::endl;
-}
+	: _name("ShrubberyCreationForm"), _target(target), _grade_to_sign(145), _grade_to_exec(137) {}
+ShrubberyCreationForm::~ShrubberyCreationForm( void ) {}
+
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src)
 	: _grade_to_sign(145), _grade_to_exec(137)
 {
-	(std::string)this->_target = (std::string)src._target;
+	this->_name = src._name;
+	this->_target = src._target;
+	(*const_cast<int*>(&this->_grade_to_sign)) = src._grade_to_sign;
+	(*const_cast<int*>(&this->_grade_to_exec)) = src._grade_to_exec;
 }
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm const & rhs)
 {
-	(std::string)this->_target = (std::string)rhs._target;
+	this->_name = rhs._name;
+	this->_target = rhs._target;
+	(*const_cast<int*>(&this->_grade_to_sign)) = rhs._grade_to_sign;
+	(*const_cast<int*>(&this->_grade_to_exec)) = rhs._grade_to_exec;
 	return *this;
 }
 
-int				ShrubberyCreationForm::getGradeToSign(void) const
+int					ShrubberyCreationForm::getGradeToSign(void) const
 {
 	return this->_grade_to_sign;
 }
-int				ShrubberyCreationForm::getGradeToExec(void) const
+int					ShrubberyCreationForm::getGradeToExec(void) const
 {
 	return this->_grade_to_exec;
 }
-
-Form*			ShrubberyCreationForm::clone(void) const
+const std::string	ShrubberyCreationForm::getName(void) const
 {
-	return (new ShrubberyCreationForm(this->_target));
+	return this->_name;
 }
 
-std::string		ShrubberyCreationForm::buildMyTree(void)
-{
-	return "arbre";
-}
-
-void			ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void				ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	std::cout << "<" << executor.getName() \
 		<< "> executs <" << this->_name << ">" << std::endl;
@@ -58,6 +50,21 @@ void			ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		std::cout << "Error: Output file." << std::endl;
 		return ;
 	}
-	ofs << ShrubberyCreationForm::buildMyTree();
+	ofs << 	"       .     .  .      +     .      .          ." << std::endl << \
+			"     .       .      .     #       .           ." << std::endl << \
+			"        .      .         ###            .      .      ." << std::endl << \
+			"      .      .   '#:. .:##'##:. .:#'  .      ." << std::endl << \
+			"          .      . '####'###'####'  ." << std::endl << \
+			"       .     '#:.    .:#'###'#:.    .:#'  .        .       ." << std::endl << \
+			"  .             '#########'#########'        .        ." << std::endl << \
+			"        .    '#:.  '####'###'####'  .:#'   .       ." << std::endl << \
+			"     .     .  '#######''##'##''#######'                  ." << std::endl << \
+			"                .'##'#####'#####'##'           .      ." << std::endl << \
+			"    .   '#:. ...  .:##'###'###'##:.  ... .:#'     ." << std::endl << \
+			"      .     '#######'##'#####'##'#######'      .     ." << std::endl << \
+			"    .    .     '#####''#######''#####'    .      ." << std::endl << \
+			"            .     '      000      '    .     ." << std::endl << \
+			"       .         .   .   000     .        .       ." << std::endl << \
+			".. .. ..................O000O........................ ......" << std::endl;
 	ofs.close();
 }

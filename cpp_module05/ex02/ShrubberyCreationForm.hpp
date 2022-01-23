@@ -16,14 +16,13 @@ class ShrubberyCreationForm : public Form
 		
 	public:
 		ShrubberyCreationForm( void );
-		virtual ~ShrubberyCreationForm( void ) throw ();
+		virtual ~ShrubberyCreationForm( void );
 		ShrubberyCreationForm(ShrubberyCreationForm const & src);
 		ShrubberyCreationForm& operator=(ShrubberyCreationForm const & rhs);
 
 		ShrubberyCreationForm( std::string target );
 
 		virtual void	execute(Bureaucrat const & executor) const;
-		virtual Form*	clone(void) const;
 		
 		int				getGradeToSign(void) const;
 		int				getGradeToExec(void) const;

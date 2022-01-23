@@ -1,4 +1,6 @@
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
+#include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm( void )
 	: _name("RobotomyRequestForm"), _target("Default"), _grade_to_sign(72), _grade_to_exec(45)
@@ -10,18 +12,24 @@ RobotomyRequestForm::RobotomyRequestForm( std::string target )
 {
 	std::cout << "Construct RobotomyRequestForm " << std::endl;
 }
-RobotomyRequestForm::~RobotomyRequestForm( void ) throw ()
+RobotomyRequestForm::~RobotomyRequestForm( void )
 {
 	std::cout << "Destruct RobotomyRequestForm." << std::endl;
 }
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src)
 	: _grade_to_sign(72), _grade_to_exec(45)
 {
-	(std::string)this->_target = (std::string)src._target;*this = src;
+	this->_name = src._name;
+	this->_target = src._target;
+	(*const_cast<int*>(&this->_grade_to_sign)) = src._grade_to_sign;
+	(*const_cast<int*>(&this->_grade_to_exec)) = src._grade_to_exec;
 }
 RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const & rhs)
 {
-	(std::string)this->_target = (std::string)rhs._target;
+	this->_name = rhs._name;
+	this->_target = rhs._target;
+	(*const_cast<int*>(&this->_grade_to_sign)) = rhs._grade_to_sign;
+	(*const_cast<int*>(&this->_grade_to_exec)) = rhs._grade_to_exec;
 	return *this;
 }
 
@@ -34,22 +42,15 @@ int				RobotomyRequestForm::getGradeToExec(void) const
 	return this->_grade_to_exec;
 }
 
-Form*			RobotomyRequestForm::clone(void) const
-{
-	return (new RobotomyRequestForm());
-}
-
-int				RobotomyRequestForm::_count = 0;
-
 void			RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	std::cout << "<" << executor.getName() \
 		<< "> executs <" << this->_name << ">" << std::endl;
-	if (RobotomyRequestForm::_count % 2)
+	srand(time(0));
+	if (rand() % 2)
 		std::cout << "Brrrrrrrrrrrr *Drill noises* <" \
 			<< this->_target << "> has been totally crushed." << std::endl;
 	else
-		std::cout << "Fail while try to cruh <" \
+		std::cout << "Fail while try to crush <" \
 			<< this->_target << ">." << std::endl;
-	RobotomyRequestForm::_count++;
 }

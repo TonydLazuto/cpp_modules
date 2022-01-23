@@ -12,18 +12,24 @@ ShrubberyCreationForm::ShrubberyCreationForm( std::string target )
 {
 	std::cout << "Construct ShrubberyCreationForm " << std::endl;
 }
-ShrubberyCreationForm::~ShrubberyCreationForm( void ) throw ()
+ShrubberyCreationForm::~ShrubberyCreationForm( void )
 {
 	std::cout << "Destruct ShrubberyCreationForm." << std::endl;
 }
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src)
 	: _grade_to_sign(145), _grade_to_exec(137)
 {
-	(std::string)this->_target = (std::string)src._target;
+	this->_name = src._name;
+	this->_target = src._target;
+	(*const_cast<int*>(&this->_grade_to_sign)) = src._grade_to_sign;
+	(*const_cast<int*>(&this->_grade_to_exec)) = src._grade_to_exec;
 }
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm const & rhs)
 {
-	(std::string)this->_target = (std::string)rhs._target;
+	this->_name = rhs._name;
+	this->_target = rhs._target;
+	(*const_cast<int*>(&this->_grade_to_sign)) = rhs._grade_to_sign;
+	(*const_cast<int*>(&this->_grade_to_exec)) = rhs._grade_to_exec;
 	return *this;
 }
 
@@ -34,16 +40,6 @@ int				ShrubberyCreationForm::getGradeToSign(void) const
 int				ShrubberyCreationForm::getGradeToExec(void) const
 {
 	return this->_grade_to_exec;
-}
-
-Form*			ShrubberyCreationForm::clone(void) const
-{
-	return (new ShrubberyCreationForm());
-}
-
-std::string		ShrubberyCreationForm::buildMyTree(void)
-{
-	return "arbre";
 }
 
 void			ShrubberyCreationForm::execute(Bureaucrat const & executor) const
@@ -58,6 +54,21 @@ void			ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		std::cout << "Error: Output file." << std::endl;
 		return ;
 	}
-	ofs << ShrubberyCreationForm::buildMyTree();
+	ofs << 	"       .     .  .      +     .      .          ." << std::endl << \
+			"     .       .      .     #       .           ." << std::endl << \
+			"        .      .         ###            .      .      ." << std::endl << \
+			"      .      .   '#:. .:##'##:. .:#'  .      ." << std::endl << \
+			"          .      . '####'###'####'  ." << std::endl << \
+			"       .     '#:.    .:#'###'#:.    .:#'  .        .       ." << std::endl << \
+			"  .             '#########'#########'        .        ." << std::endl << \
+			"        .    '#:.  '####'###'####'  .:#'   .       ." << std::endl << \
+			"     .     .  '#######''##'##''#######'                  ." << std::endl << \
+			"                .'##'#####'#####'##'           .      ." << std::endl << \
+			"    .   '#:. ...  .:##'###'###'##:.  ... .:#'     ." << std::endl << \
+			"      .     '#######'##'#####'##'#######'      .     ." << std::endl << \
+			"    .    .     '#####''#######''#####'    .      ." << std::endl << \
+			"            .     '      000      '    .     ." << std::endl << \
+			"       .         .   .   000     .        .       ." << std::endl << \
+			".. .. ..................O000O........................ ......" << std::endl;
 	ofs.close();
 }

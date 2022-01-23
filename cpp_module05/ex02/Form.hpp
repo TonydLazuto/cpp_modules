@@ -35,9 +35,15 @@ class Form
 		};
 		class GradeTooHighException : public std::exception
 		{
+			private:
+				Form*	_f;
 			public:
-				GradeTooHighException( void ) throw() {}
-				virtual ~GradeTooHighException( void ) throw() {}
+				GradeTooHighException( void ) throw() : _f(NULL) {}
+				GradeTooHighException( Form* f ) throw() : _f(f) {}
+				virtual ~GradeTooHighException( void ) throw() {
+					if (this->_f)
+						delete this->_f;
+				}
 				virtual const char* what() const throw()
 				{
 					return "<bureaucrat> cannot sign because Grade is to high to sign this form.";
@@ -46,12 +52,14 @@ class Form
 		};
 		class GradeTooLowToExecException : public std::exception
 		{
+			private:
+				Form	*_f;
 			public:
-				GradeTooLowToExecException( void ) throw() {}
-				// GradeTooLowToExecException( Form* f ) throw() : _f(f) {}
+				GradeTooLowToExecException( void ) throw() : _f(NULL) {}
+					GradeTooLowToExecException( Form* f ) throw() : _f(f) {}
 				virtual ~GradeTooLowToExecException( void ) throw() {
-					// if (this->_f)
-					// 	delete this->_f;
+					if (this->_f)
+						delete this->_f;
 				}
 				virtual const char* what() const throw()
 				{
@@ -60,7 +68,7 @@ class Form
 
 		};
 		Form( void );
-		virtual ~Form( void ) throw();
+		virtual ~Form( void );
 		Form(Form const & src);
 		Form& operator=(Form const & rhs);
 
@@ -74,7 +82,6 @@ class Form
 		void				beSigned(Bureaucrat& b);
 		void				launchExecute(Bureaucrat const & executor) const;
 
-		virtual Form		*clone(void) const = 0;
 		virtual void		execute(Bureaucrat const & executor) const = 0;
 };
 

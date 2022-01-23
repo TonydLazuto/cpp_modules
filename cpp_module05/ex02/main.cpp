@@ -9,8 +9,8 @@ int	main(void)
 {
 	try
 	{
-		Bureaucrat	john("john", 60);
-		Bureaucrat	alex("alex", 140);
+		Bureaucrat	john("john", 50);
+		// Bureaucrat	alex("alex", 140);
 		// std::cout << john << std::endl;
 		// john.increaseGrade(20);
 		// std::cout << john << std::endl;
@@ -23,7 +23,7 @@ int	main(void)
 		// alex.decreaseGrade(10);
 		// std::cout << alex << std::endl << std::endl;
 
-		Form *form1 = new RobotomyRequestForm("Ford Perfect");
+		Form *form1 = new RobotomyRequestForm("Ford perfect");
 		std::cout << *form1 << std::endl;
 		std::cout << john << std::endl;
 		john.signForm(*form1);
@@ -43,10 +43,11 @@ int	main(void)
 		// alex.signForm(form2);
 		// std::cout << alex << std::endl;
 		// std::cout << form2 << std::endl;
-		}
+		
+	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 	return 0;
 }

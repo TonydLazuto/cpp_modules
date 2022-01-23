@@ -1,42 +1,52 @@
 #include "Intern.hpp"
+#include <Form.hpp>
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 Intern::Intern( void ) {}
-
-Intern::~Intern( void ) throw () {}
+Intern::~Intern( void ) {}
 Intern::Intern(Intern const & src)
 {
-	*this =src;
+	(void)src;
 }
 Intern& Intern::operator=(Intern const & rhs)
 {
-	*this =rhs;
+	(void)rhs;
 	return *this;
+}
+Form*	Intern::clonePresi(std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}
+Form*	Intern::cloneShrub(std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+Form*	Intern::cloneRobot(std::string target)
+{
+	return (new RobotomyRequestForm(target));
 }
 
 Form*	Intern::makeForm( std::string name_form, std::string target)
 {
-	Form *form = NULL;
-	std::string forms[3] = {
-		"presidential pardon",
-		"shrubbery creation",
-		"robotomy request"
-	}
-	InternMemFn arr[] = {
-		&PresidentialPardonForm::clone,
-		&ShrubberyCreationForm::clone,
-		&RobotomyRequestForm::clone,
-		0
+	Form	*form = NULL;
+
+	t_form	form_elet[] = {
+		{ "presidential pardon", &Intern::clonePresi },
+		{ "shrubbery creation", &Intern::cloneShrub },
+		{ "robotomy request", &Intern::cloneRobot }
 	};
 	int i = 0;
-	while (i <= 3 && name_form.compare(forms[i]) != 0)
+	while (i < 3 && name_form.compare(form_elet[i].clone_name) != 0)
 		i++;
 	if (i == 3)
 	{
 		std::cout << "This is not a form!" <<std::endl;
 		return NULL;
 	}
-	form = (this->*arr[i])()
-	std::cout << "Intern creates <" << form->_name \
+	form = ((this->*form_elet[i].ft)(target));
+	std::cout << "Intern creates <" << form->getName() \
 		<< ">" << std::endl;
 	return form;
 }

@@ -14,17 +14,18 @@ class PresidentialPardonForm : public Form
 
 	public:
 		PresidentialPardonForm( void );
-		virtual ~PresidentialPardonForm( void ) throw ();
+		virtual ~PresidentialPardonForm( void );
 		PresidentialPardonForm(PresidentialPardonForm const & src);
 		PresidentialPardonForm& operator=(PresidentialPardonForm const & rhs);
 
 		PresidentialPardonForm( std::string type );
 
-		virtual void	execute(Bureaucrat const & executor) const;
-		virtual Form*	clone(void) const;
+		virtual void		execute(Bureaucrat const & executor) const;
 
-		int				getGradeToSign(void) const;
-		int				getGradeToExec(void) const;
+		int					getGradeToSign(void) const;
+		int					getGradeToExec(void) const;
+		const std::string	getName(void) const;
+
 };
 
 #endif

@@ -1,25 +1,20 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat( void ) : _name("Bureaucrat"), _grade(150)
-{
-	std::cout << "Construct Bureaucrat " << this->_name << std::endl;
-}
+Bureaucrat::Bureaucrat( void ) : _name("Bureaucrat"), _grade(150) {}
 Bureaucrat::Bureaucrat( std::string name, int grade ) : _name(name), _grade(grade)
 {
 	Bureaucrat::checkBureaucrat(grade);
-	std::cout << "Construct Bureaucrat " << this->_name << std::endl;
 }
-Bureaucrat::~Bureaucrat( void ) throw()
-{
-	std::cout << "Destruct Bureaucrat." << std::endl;
-}
+Bureaucrat::~Bureaucrat( void ) {}
+
 Bureaucrat::Bureaucrat(Bureaucrat const & src)
 {
-	*this = src;
+	static_cast<std::string>(this->_name) = static_cast<std::string>(src._name);
+	this->_grade = src._grade;
 }
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const & rhs)
 {
-	(std::string)this->_name = (std::string)rhs._name;
+	static_cast<std::string>(this->_name) = static_cast<std::string>(rhs._name);
 	this->_grade = rhs._grade;
 	return *this;
 }

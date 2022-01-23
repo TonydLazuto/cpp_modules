@@ -41,7 +41,7 @@ class Bureaucrat
 				}
 		};
 		Bureaucrat( void );
-		virtual ~Bureaucrat( void ) throw();
+		virtual ~Bureaucrat( void );
 		Bureaucrat(Bureaucrat const & src);
 		Bureaucrat& operator=(Bureaucrat const & rhs);
 

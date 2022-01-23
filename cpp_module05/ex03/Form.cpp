@@ -1,30 +1,29 @@
 #include "Form.hpp"
 
 Form::Form( void ) : _name("Form"), _sign(false)
-					, _grade_to_sign(100), _grade_to_exec(50)
-{
-	std::cout << "Construct Form " << this->_name << std::endl;
-}
+					, _grade_to_sign(100), _grade_to_exec(30) {
+						std::cout << "HELLO BUDDY!!!!!!!" << std::endl;
+					}
 Form::Form( std::string name, const int grade_to_sign
 			, const int grade_to_exec)
 	: _name(name), _sign(false)
-	, _grade_to_sign(grade_to_sign), _grade_to_exec(grade_to_exec)
-{
-	std::cout << "Construct Form " << this->_name << std::endl;
-}
-Form::~Form( void ) throw()
-{
-	std::cout << "Destruct Form." << std::endl;
-}
+	, _grade_to_sign(grade_to_sign), _grade_to_exec(grade_to_exec) {}
+Form::~Form( void ) {}
+
 Form::Form(Form const & src) : _grade_to_sign(src._grade_to_sign)
 								, _grade_to_exec(src._grade_to_exec)
 {
-	*this = src;
+	static_cast<std::string>(this->_name) = static_cast<std::string>(src._name);
+	this->_sign = src._sign;
+	(*const_cast<int*>(&this->_grade_to_sign)) = src._grade_to_sign;
+	(*const_cast<int*>(&this->_grade_to_exec)) = src._grade_to_exec;
 }
 Form& Form::operator=(Form const & rhs)
 {
-	(std::string)this->_name = (std::string)rhs._name;
+	static_cast<std::string>(this->_name) = static_cast<std::string>(rhs._name);
 	this->_sign = rhs._sign;
+	(*const_cast<int*>(&this->_grade_to_sign)) = rhs._grade_to_sign;
+	(*const_cast<int*>(&this->_grade_to_exec)) = rhs._grade_to_exec;
 	return *this;
 }
 
@@ -47,10 +46,11 @@ int					Form::getGradeToExec(void) const
 
 void				Form::beSigned(Bureaucrat& b)
 {
+	Form *cpy = const_cast<Form*>(this);
 	if (b.getGrade() > this->_grade_to_sign)
-		throw Form::GradeTooLowException();
+		throw Form::GradeTooLowException(cpy);
 	if (b.getGrade() < 1)
-		throw Form::GradeTooHighException();
+		throw Form::GradeTooHighException(cpy);
 	this->_sign = true;
 	std::cout << "<" << b.getName() << "> signs " \
 		<< this->_name << std::endl;
@@ -58,13 +58,13 @@ void				Form::beSigned(Bureaucrat& b)
 }
 
 void				Form::launchExecute(Bureaucrat const & executor) const
-{
-	Form *my_form = this->clone();
-
-	if (!this->_sign || executor.getGrade() > my_form->_grade_to_exec)
-		throw Form::GradeTooLowToExecException();
-	my_form->execute(executor);
-	delete my_form;
+{	
+	if (!this->_sign || (executor.getGrade() > this->getGradeToExec()))
+	{
+		const Form*	cpy = this;
+		throw Form::GradeTooLowToExecException(cpy);
+	}
+	this->execute(executor);
 }
 
 std::ostream&	operator<<(std::ostream& o, Form const & rhs)

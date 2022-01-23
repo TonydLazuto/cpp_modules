@@ -1,6 +1,7 @@
 #include <ostream>
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "Intern.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -9,8 +10,8 @@ int	main(void)
 {
 	try
 	{
-		Bureaucrat	john("john", 60);
-		Bureaucrat	alex("alex", 140);
+		Bureaucrat	john("john", 46);
+		// Bureaucrat	alex("alex", 140);
 		// std::cout << john << std::endl;
 		// john.increaseGrade(20);
 		// std::cout << john << std::endl;
@@ -23,18 +24,21 @@ int	main(void)
 		// alex.decreaseGrade(10);
 		// std::cout << alex << std::endl << std::endl;
 
-		Form *form1 = new RobotomyRequestForm("Ford Perfect");
-		std::cout << *form1 << std::endl;
+		// Form *form1 = new RobotomyRequestForm("Ok");
+		Intern someRandomIntern;
+		Form* rrf;
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		// std::cout << *rrf << std::endl;
 		std::cout << john << std::endl;
-		john.signForm(*form1);
-		// std::cout << *form1 << std::endl;
+		john.signForm(*rrf);
+		std::cout << *rrf << std::endl;
 		// john.decreaseGrade(50);
-		// john.signForm(*form1);
+		// john.signForm(*rrf);
 		// std::cout << john << std::endl;
 		// std::cout << *form1 << std::endl;
-		john.executeForm(*form1);
+		john.executeForm(*rrf);
 
-		delete form1;
+		delete rrf;
 		// Form form2;
 		// std::cout << alex << std::endl;
 		// std::cout << form2 << std::endl;
@@ -43,13 +47,10 @@ int	main(void)
 		// alex.signForm(form2);
 		// std::cout << alex << std::endl;
 		// std::cout << form2 << std::endl;
-
-		Intern someRandomIntern;
-		Form* rrf;
-		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 	return 0;
 }

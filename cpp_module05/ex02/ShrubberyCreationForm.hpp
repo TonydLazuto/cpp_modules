@@ -11,8 +11,6 @@ class ShrubberyCreationForm : public Form
 		std::string		_target;
 		const int		_grade_to_sign;
 		const int		_grade_to_exec;
-
-		static std::string		buildMyTree(void);
 		
 	public:
 		ShrubberyCreationForm( void );

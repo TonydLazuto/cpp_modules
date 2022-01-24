@@ -63,7 +63,7 @@ class Form
 				}
 				virtual const char* what() const throw()
 				{
-					return "<bureaucrat> cannot sign because Grade is to low to exec this form.";
+					return "<bureaucrat> cannot exec because Grade is to low to exec this form or form is not signed.";
 				}
 
 		};
@@ -79,10 +79,10 @@ class Form
 		virtual int					getGradeToSign(void) const;
 		virtual int					getGradeToExec(void) const;
 
-		void				beSigned(Bureaucrat& b);
-		void				launchExecute(Bureaucrat const & executor) const;
+		void						beSigned(Bureaucrat& b);
+		void						launchExecute(Bureaucrat const & executor) const;
 
-		virtual void		execute(Bureaucrat const & executor) const = 0;
+		virtual void				execute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream&	operator<<(std::ostream& o, Form const & rhs);

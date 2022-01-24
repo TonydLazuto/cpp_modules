@@ -1,19 +1,11 @@
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm( void )
-	: _name("PresidentialPardonForm"), _target("Default"), _grade_to_sign(25), _grade_to_exec(5)
-{
-	std::cout << "Construct PresidentialPardonForm " << std::endl;
-}
+	: _name("PresidentialPardonForm"), _target("Default"), _grade_to_sign(25), _grade_to_exec(5) {}
 PresidentialPardonForm::PresidentialPardonForm( std::string target )
-	: _name("PresidentialPardonForm"), _target(target), _grade_to_sign(25), _grade_to_exec(5)
-{
-	std::cout << "Construct PresidentialPardonForm " << std::endl;
-}
-PresidentialPardonForm::~PresidentialPardonForm( void )
-{
-	std::cout << "Destruct PresidentialPardonForm." << std::endl;
-}
+	: _name("PresidentialPardonForm"), _target(target), _grade_to_sign(25), _grade_to_exec(5) {}
+PresidentialPardonForm::~PresidentialPardonForm( void ) {}
+
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & src)
 	: _grade_to_sign(25), _grade_to_exec(5)
 {
@@ -31,16 +23,16 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm
 	return *this;
 }
 
-int				PresidentialPardonForm::getGradeToSign(void) const
+int		PresidentialPardonForm::getGradeToSign(void) const
 {
 	return this->_grade_to_sign;
 }
-int				PresidentialPardonForm::getGradeToExec(void) const
+int		PresidentialPardonForm::getGradeToExec(void) const
 {
 	return this->_grade_to_exec;
 }
 
-void			PresidentialPardonForm::execute(Bureaucrat const & executor) const
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	std::cout << "<" << executor.getName() \
 		<< "> executs <" << this->_name << ">" << std::endl;

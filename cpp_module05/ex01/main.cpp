@@ -6,7 +6,7 @@ int	main(void)
 {
 	try
 	{
-		Bureaucrat	john("john", 30);
+		Bureaucrat	john("john", 40);
 		// Bureaucrat	alex("alex", 140);
 		// std::cout << john << std::endl;
 		// john.increaseGrade(20);

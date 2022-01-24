@@ -3,19 +3,11 @@
 #include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm( void )
-	: _name("RobotomyRequestForm"), _target("Default"), _grade_to_sign(72), _grade_to_exec(45)
-{
-	std::cout << "Construct RobotomyRequestForm " << std::endl;
-}
+	: _name("RobotomyRequestForm"), _target("Default"), _grade_to_sign(72), _grade_to_exec(45) {}
 RobotomyRequestForm::RobotomyRequestForm( std::string target )
-	: _name("RobotomyRequestForm"), _target(target), _grade_to_sign(72), _grade_to_exec(45)
-{
-	std::cout << "Construct RobotomyRequestForm " << std::endl;
-}
-RobotomyRequestForm::~RobotomyRequestForm( void )
-{
-	std::cout << "Destruct RobotomyRequestForm." << std::endl;
-}
+	: _name("RobotomyRequestForm"), _target(target), _grade_to_sign(72), _grade_to_exec(45) {}
+RobotomyRequestForm::~RobotomyRequestForm( void ) {}
+
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src)
 	: _grade_to_sign(72), _grade_to_exec(45)
 {
@@ -33,16 +25,16 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const & 
 	return *this;
 }
 
-int				RobotomyRequestForm::getGradeToSign(void) const
+int		RobotomyRequestForm::getGradeToSign(void) const
 {
 	return this->_grade_to_sign;
 }
-int				RobotomyRequestForm::getGradeToExec(void) const
+int		RobotomyRequestForm::getGradeToExec(void) const
 {
 	return this->_grade_to_exec;
 }
 
-void			RobotomyRequestForm::execute(Bureaucrat const & executor) const
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	std::cout << "<" << executor.getName() \
 		<< "> executs <" << this->_name << ">" << std::endl;

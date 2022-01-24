@@ -46,7 +46,7 @@ Form*	Intern::makeForm( std::string name_form, std::string target)
 		return NULL;
 	}
 	form = ((this->*form_elet[i].ft)(target));
-	std::cout << "Intern creates <" << form->getName() \
+	std::cout << "<Intern> creates <" << form->getName() \
 		<< ">" << std::endl;
 	return form;
 }

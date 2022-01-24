@@ -9,7 +9,7 @@ int	main(void)
 {
 	try
 	{
-		Bureaucrat	john("john", 50);
+		Bureaucrat	john("john", 139);
 		// Bureaucrat	alex("alex", 140);
 		// std::cout << john << std::endl;
 		// john.increaseGrade(20);
@@ -23,7 +23,7 @@ int	main(void)
 		// alex.decreaseGrade(10);
 		// std::cout << alex << std::endl << std::endl;
 
-		Form *form1 = new RobotomyRequestForm("Ford perfect");
+		Form *form1 = new ShrubberyCreationForm("Ford perfect");
 		std::cout << *form1 << std::endl;
 		std::cout << john << std::endl;
 		john.signForm(*form1);

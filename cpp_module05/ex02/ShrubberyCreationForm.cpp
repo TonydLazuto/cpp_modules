@@ -3,19 +3,11 @@
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm( void )
-	: _name("ShrubberyCreationForm"), _target("Default"), _grade_to_sign(145), _grade_to_exec(137)
-{
-	std::cout << "Construct ShrubberyCreationForm " << std::endl;
-}
+	: _name("ShrubberyCreationForm"), _target("Default"), _grade_to_sign(145), _grade_to_exec(137) {}
 ShrubberyCreationForm::ShrubberyCreationForm( std::string target )
-	: _name("ShrubberyCreationForm"), _target(target), _grade_to_sign(145), _grade_to_exec(137)
-{
-	std::cout << "Construct ShrubberyCreationForm " << std::endl;
-}
-ShrubberyCreationForm::~ShrubberyCreationForm( void )
-{
-	std::cout << "Destruct ShrubberyCreationForm." << std::endl;
-}
+	: _name("ShrubberyCreationForm"), _target(target), _grade_to_sign(145), _grade_to_exec(137) {}
+ShrubberyCreationForm::~ShrubberyCreationForm( void ) {}
+
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src)
 	: _grade_to_sign(145), _grade_to_exec(137)
 {
@@ -33,16 +25,16 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 	return *this;
 }
 
-int				ShrubberyCreationForm::getGradeToSign(void) const
+int		ShrubberyCreationForm::getGradeToSign(void) const
 {
 	return this->_grade_to_sign;
 }
-int				ShrubberyCreationForm::getGradeToExec(void) const
+int		ShrubberyCreationForm::getGradeToExec(void) const
 {
 	return this->_grade_to_exec;
 }
 
-void			ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	std::cout << "<" << executor.getName() \
 		<< "> executs <" << this->_name << ">" << std::endl;

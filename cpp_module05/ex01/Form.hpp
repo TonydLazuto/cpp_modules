@@ -23,7 +23,7 @@ class Form
 				virtual ~GradeTooLowException( void ) throw() {}
 				virtual const char* what() const throw()
 				{
-					return "Exception: Bureaucrat Grade is to low to sign this form.";
+					return "<bureaucrat> cannot sign because Grade is to low to sign this form.";
 				}
 
 		};
@@ -34,12 +34,12 @@ class Form
 				virtual ~GradeTooHighException( void ) throw() {}
 				virtual const char* what() const throw()
 				{
-					return "Exception: Bureaucrat Grade is to high to sign this form.";
+					return "<bureaucrat> cannot sign because Grade is to high to sign this form.";
 				}
 
 		};
 		Form( void );
-		virtual ~Form( void ) throw();
+		virtual ~Form( void );
 		Form(Form const & src);
 		Form& operator=(Form const & rhs);
 

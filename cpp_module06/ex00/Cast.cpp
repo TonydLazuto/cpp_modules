@@ -1,26 +1,24 @@
 #include "Cast.hpp"
 
 Cast::Cast( void ) {}
-Cast::Cast( int type ) : _type(type)
+Cast::Cast( std::string arg )
+: _val_char(0), _val_int(0), _val_float(0)
+	, _val_double(0), _arg(arg)
 {
-	switch (type)
+	try
 	{
-		case Cast::DT_CHAR:
-			/* code */
-			break;
-		case Cast::DT_INT:
-			/* code */
-			break;
-		case Cast::DT_FLOAT:
-			/* code */
-			break;
-		case Cast::DT_DOUBLE:
-			/* code */
-			break;
-		
-		default:
-			break;
+		this->_val_char = static_cast<char>(arg);
+			
 	}
+	// this->_val_int = static_cast<int>(arg);
+	// this->_val_float = static_cast<float>(arg);
+	// this->_val_double = static_cast<double>(arg);
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+		std::cout << "HELLO" <<std::endl;
+	}
+
 }
 Cast::~Cast( void ) {}
 
@@ -34,44 +32,32 @@ Cast& Cast::operator=(Cast const & rhs)
 	this->_val_int = rhs._val_int;
 	this->_val_float = rhs._val_float;
 	this->_val_double = rhs._val_double;
-	this->_type = rhs._type;
+	this->_arg = rhs._arg;
 	return *this;
 }
 
-int		Cast::getType(const char *av, int type)
+char	Cast::getValChar( void ) const
 {
-	std::string arg(av);
-	std::size_t found = arg.find(".");
-	if (arg.size() == 1 && isalpha(av[0]))
-		return Cast::DT_CHAR;
-	for ( std::string::iterator it=arg.begin(); it!=arg.end(); ++it)
-	{
-		if (!isalnum(*it) && *it != '.' && av[0] != '-')
-			return (-1);
-		if (found != std::string::npos)
-		{
-			if (isalpha(*it))
-			{
-				type = Cast::DT_FLOAT;
-				break ;
-			}
-		}
-		else
-		{
-			type = Cast::DT_INT;
-			break ;
-		}
-	}
-	return type;
+	return this->_val_char;
+}
+int		Cast::getValInt( void ) const
+{
+	return this->_val_int;
+}
+float	Cast::getValFloat( void ) const
+{
+	return this->_val_float;
+}
+double	Cast::getValDouble( void ) const
+{
+	return this->_val_double;
 }
 
-void	Cast::print_result(void) const
+std::ostream&	operator<<(std::ostream &o, Cast const & src)
 {
-	;
-}
-
-std::ostream&	operator<<(std::ostream &o, const Cast &src)
-{
-	o << "char: " << this->_val_char;
+	o << "char: " << src.getValChar() << std::endl \
+	<< "int: " << src.getValInt() << std::endl \
+	<< "float: " << src.getValFloat() << std::endl \
+	<< "double: " << src.getValDouble() << std::endl;
 	return o;
 }

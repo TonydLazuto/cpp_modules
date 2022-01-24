@@ -10,7 +10,8 @@ RM			=	/bin/rm -f
 
 OBJ_DIR		=	obj
 
-SRCS		=	main.cpp	
+SRCS		=	main.cpp \
+				Cast.cpp
 
 OBJS		=	$(addprefix $(OBJ_DIR)/,$(SRCS:.cpp=.o))
 

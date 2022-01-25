@@ -12,7 +12,14 @@ class Cast
 		float		_val_float;
 		double		_val_double;
 
-		std::string	_arg;
+		int			_type;
+
+		enum type_detect {
+			DT_CHAR,
+			DT_INT,
+			DT_FLOAT,
+			DT_DOUBLE
+		};
 
 		Cast( void );
 		
@@ -21,13 +28,14 @@ class Cast
 		Cast(Cast const & src);
 		Cast& operator=(Cast const & rhs);
 
-		Cast( std::string arg );
+		Cast( char* arg );
 
 		char	getValChar( void ) const;
 		int		getValInt( void ) const;
 		float	getValFloat( void ) const;
 		double	getValDouble( void ) const;
 
+		void	setType(char *av);
 		// void		Cast::print_result(void) const
 };
 

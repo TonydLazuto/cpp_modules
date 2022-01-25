@@ -12,7 +12,7 @@ class Cast
 		float		_val_float;
 		double		_val_double;
 
-		int			_type;
+		int			_res_convert[4];
 
 		enum type_detect {
 			DT_CHAR,
@@ -28,17 +28,15 @@ class Cast
 		Cast(Cast const & src);
 		Cast& operator=(Cast const & rhs);
 
-		Cast( char* arg );
+		Cast( const char* arg );
 
 		char	getValChar( void ) const;
 		int		getValInt( void ) const;
 		float	getValFloat( void ) const;
 		double	getValDouble( void ) const;
 
-		void	setType(char *av);
-		// void		Cast::print_result(void) const
+		void	setValues(const char *av);
+		void	print_result(const char *av) const;
 };
-
-std::ostream&	operator<<(std::ostream &o, Cast const & src);
 
 #endif

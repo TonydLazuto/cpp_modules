@@ -1,44 +1,18 @@
 #include "Cast.hpp"
 #include <string>
-
+#include <climits>
+#include <cmath>
+#include <iomanip>
 
 Cast::Cast( void ) {}
 Cast::~Cast( void ) {}
 
-Cast::Cast( char* arg ) : _val_char(0), _val_int(0), _val_float(0)
-	, _val_double(0), _type(Cast::DT_INT)
+Cast::Cast( const char* arg ) : _val_char(0), _val_int(0)
+	, _val_float(0) , _val_double(0)
 {
-	this->setType(arg);
-	switch (this->_type)
-	{
-	case Cast::DT_CHAR:
-		this->_val_char = (*static_cast<char*>(arg));
-		break;
-	case Cast::DT_INT:
-		this->_val_int = (*static_cast<int*>(arg));
-		break;
-	case Cast::DT_FLOAT:
-		std::cout << "I'm a float" << std::endl;
-		break;
-	case Cast::DT_DOUBLE:
-		std::cout << "I'm a double" << std::endl;
-		break;
-	
-	default:
-		std::cout << "I'm a none" << std::endl;
-		break;
-	}
-	try
-	{
-		// this->_val_int = static_cast<int>(arg);
-		// this->_val_float = static_cast<float>(arg);
-		// this->_val_double = static_cast<double>(arg);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-		std::cout << "YOO" <<std::endl;
-	}
+	for (int i = 0; i < 4; i++)
+		this->_res_convert[i] = 0;
+	this->setValues(arg);
 
 }
 Cast::Cast(Cast const & src)
@@ -54,60 +28,53 @@ Cast& Cast::operator=(Cast const & rhs)
 	return *this;
 }
 
-void	Cast::setType(char *av)
+void	Cast::setValues(const char *av)
 {
-	std::string arg(av);
-	if (arg.size() == 1 && isalpha(av[0]))
+	long int	val_int_long;
+
+	val_int_long = strtol(av, NULL, 10);
+	if (val_int_long <= INT_MAX && val_int_long >= INT_MIN)
 	{
-		this->_type= Cast::DT_CHAR;
-		return ;
+		if (val_int_long != 0L)
+			this->_res_convert[DT_CHAR] = 1;
+		if ((val_int_long == 0L && atoi(av) == 0) || val_int_long != 0L)
+			this->_res_convert[DT_INT] = 1;
+		this->_val_int = static_cast<int>(val_int_long);
+		this->_val_char = static_cast<char>(this->_val_int);
 	}
-	std::string::iterator it=arg.begin();
-	if (*it == '-')
-		it++;
-	while (it != arg.end() && isdigit(*it))
-		it++;
-	if (it == arg.end())
-		return ;
-	if (*it != '.')
+	this->_val_double = strtod(av, NULL);
+	if (this->_val_double <= HUGE_VAL && this->_val_double >= -HUGE_VAL)
 	{
-		this->_type = -1;
-		return ;
+		if ((this->_val_double == 0.0 && atoi(av) == 0) || this->_val_double != 0.0)
+		{
+			this->_res_convert[DT_FLOAT] = 1;
+			this->_res_convert[DT_DOUBLE] = 1;
+		}
+		this->_val_float = static_cast<float>(this->_val_double);
 	}
-	it++;
-	this->_type = Cast::DT_DOUBLE;
-	while (it != arg.end() && isdigit(*it))
-		it++;
-	if (it == arg.end())
-		return ;
-	if (*it == 'f')
-		this->_type = Cast::DT_FLOAT;
+}
+
+void		Cast::print_result(const char *av) const
+{
+	if (this->_res_convert[DT_CHAR])
+		std::cout << "char: " << this->_val_char << std::endl;
+	else if (atoi(av) == 0)
+		std::cout << "char: " << "Non displayble" << std::endl;
 	else
-		this->_type = -1;
-}
-
-char	Cast::getValChar( void ) const
-{
-	return this->_val_char;
-}
-int		Cast::getValInt( void ) const
-{
-	return this->_val_int;
-}
-float	Cast::getValFloat( void ) const
-{
-	return this->_val_float;
-}
-double	Cast::getValDouble( void ) const
-{
-	return this->_val_double;
-}
-
-std::ostream&	operator<<(std::ostream &o, Cast const & src)
-{
-	o << "char: " << src.getValChar() << std::endl \
-	<< "int: " << src.getValInt() << std::endl \
-	<< "float: " << src.getValFloat() << std::endl \
-	<< "double: " << src.getValDouble();
-	return o;
+		std::cout << "char: " << "impossible" << std::endl;
+	if (this->_res_convert[DT_INT])
+		std::cout << "int: " << this->_val_int << std::endl;
+	else
+		std::cout << "int: " << "impossible" << std::endl;
+	if (this->_res_convert[DT_FLOAT])
+	{
+		std::cout << std::fixed  << std::setprecision(1);
+		std::cout << "float: " << this->_val_float << "f" << std::endl;
+	}
+	else
+		std::cout << "float: " << "impossible" << std::endl;
+	if (this->_res_convert[DT_DOUBLE])
+		std::cout << "double: " << this->_val_double << std::endl;
+	else
+		std::cout << "double: " << "impossible" << std::endl;
 }

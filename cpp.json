@@ -1,0 +1,90 @@
+{
+	// Place your snippets for cpp here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	"main code": {
+		"prefix": "main code",
+		"body": [
+			"#include <iostream>\n",
+			"int\tmain(void)",
+			"{",
+			"\t$1",
+			"\treturn 0;",
+			"}"
+		],
+		"description": "this is my main code snipet"
+	},
+
+	"hpp class code": {
+		"prefix": "hpp class",
+		"body": [
+			"#ifndef $1_HPP",
+			"# define $1_HPP\n",
+			"#include <iostream>\n",
+			"class $2",
+			"{",
+			"\tprivate:",
+			"\t\t$3",
+			"\n\tpublic:",
+			"\t\t$2( void );",
+			"\t\tvirtual ~$2( void );",
+			"\t\t$2($2 const & src);",
+			"\t\t$2& operator=($2 const & rhs);\n",
+			"\t\t$2( std::string type );\n",
+			"\t\t$4",
+			"};\n",
+			"#endif\n"
+		],
+		"description": "this is my class hpp code snipet"
+	},
+
+	"cpp class code": {
+		"prefix": "cpp class",
+		"body": [
+			"#include \"$1.hpp\"\n",
+			"$1::$1( void )",
+			"{",
+			"\tstd::cout << \"Construct $1 \" << this->_$2 << std::endl;",
+			"}",
+			"$1::$1( std::string $2 ) : _$2($2)",
+			"{",
+			"\tstd::cout << \"Construct $1 \" << this->_$2 << std::endl;",
+			"}",
+			"$1::~$1( void )",
+			"{",
+			"\tstd::cout << \"Destruct $1.\" << std::endl;",
+			"}",
+			"$1::$1($1 const & src)",
+			"{",
+			"\t*this = src;",
+			"}",
+			"$1& $1::operator=($1 const & rhs)",
+			"{",
+			"\tthis->_$2 = rhs._$2;",
+			"\treturn *this;",
+			"}"
+		],
+		"description": "this is my class cpp code snipet"
+	},
+
+	"loop for": {
+		"prefix": "loop for",
+		"body": [
+			"for (int i = 0; i < $1; i++)",
+			"{",
+			"\t$2",
+			"}"
+		],
+		"description": "for loop initialization"
+	},
+
+	"cout code": {
+		"prefix": "cout code",
+		"body": [
+			"std::cout << $1 << std::endl;"
+		],
+		"description": "std::cout completion"
+	}
+}

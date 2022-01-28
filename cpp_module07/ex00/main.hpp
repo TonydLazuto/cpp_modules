@@ -1,6 +1,6 @@
 #include <iostream>
 
-template < typename T, typename U>
+template < typename T, typename U >
 void	swap(T& x, U& y)
 {
 	(void)x;
@@ -25,7 +25,7 @@ T	max(T x, U y)
 	return 0;
 }
 
-template < typename T>
+template < typename T >
 void	swap(T& x, T& y)
 {
 

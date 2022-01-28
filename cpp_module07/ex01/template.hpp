@@ -4,7 +4,7 @@
 #include <iostream>
 
 template < typename T, typename U >
-void	iter(T* elet, U len, void (*f)(T))
+void	iter(T elet[], U len, void (*f)(T const&))
 {
 	if (!elet || len <= 0 || !f)
 		return ;

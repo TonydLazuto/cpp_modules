@@ -15,19 +15,30 @@ class ContainerException: public std::exception
 {
 	virtual const char* what() const throw()
 	{
-		return ("Not found.");
+		return ("Exception: Not found.");
 	}
 };
 
 template<typename T>
 void	easyfind2( T &container, int nb)
 {
-	typename T::iterator val;
+	typename T::iterator it;
 
-	val = find(container.begin(), container.end(), nb);
-	if (val == container.end())
-		throw std::exception();
-	std::cout << "Value find in container: " << *val << std::endl;
+	it = find(container.begin(), container.end(), nb);
+	if (it == container.end())
+		throw ContainerException();
+	std::cout << "Value find in container: " << *it << std::endl;
+}
+
+template<typename T>
+void	easyfind2( T const &container, int nb)
+{
+	typename T::const_iterator it;
+
+	it = find(container.begin(), container.end(), nb);
+	if (it == container.end())
+		throw ContainerException();
+	std::cout << "Value find in container: " << *it << std::endl;
 }
 
 template <>
@@ -44,24 +55,41 @@ void	easyfind2(std::map<std::string, int>& map, int nb)
 		++it;
 	}
 	if (it == map.end())
-		throw std::exception();
+		throw ContainerException();
 }
 
-// template <>
-// void	easyfind2(std::stack<int> const& mystack, int nb)
-// {
-// 	(void)nb;
-// 	std::stack<int> *ptrstack = &(const_cast<std::stack<int>&>(mystack));
-// 	for (int i = 0; i < mystack.size(); i++)
-// 	{
-// 		// ptrstack->front();
-// 		std::cout << "Through stack : " << ptrstack->front() << std::endl;
-// 		// ptrstack -= ;
-		
-// 	}
+template <>
+void	easyfind2(std::map<std::string, int> const& map, int nb)
+{
+	std::map<std::string, int>::const_iterator it = map.begin();
+	while (it != map.end())
+	{
+		if (it->second == nb)
+		{
+			std::cout << "Value find in container_map: " << it->second << std::endl;
+			return ;
+		}
+		++it;
+	}
+	if (it == map.end())
+		throw ContainerException();
+}
 
+// template < class T, class Container = deque<T> >
+// void	easyfind2(std::stack<T, Container> & mystack, int nb)
+// {
+// 	std::stack<T, Container>::;
+// 	while (stack::value)
+// 	{
+// 		if (it->second == nb)
+// 		{
+// 			std::cout << "Value find in container_stack: " << it->second << std::endl;
+// 			return ;
+// 		}
+// 		++it;
+// 	}
 // 	if (!mystack.size())
-// 		throw std::exception();
+// 		throw ContainerException();
 // }
 
 template < typename T >

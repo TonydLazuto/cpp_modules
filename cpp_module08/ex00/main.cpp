@@ -6,6 +6,10 @@
  * this can't work here.
  */
 
+// template<typename T>
+// class iterable_stack : public std::stack< T, std::deque<T> >
+// {};
+
 int	main(void)
 {
 	std::vector<int> v (4, 100);
@@ -34,7 +38,7 @@ int	main(void)
 		easyfind< std::list<int> >(lst, 200);
 		easyfind< std::deque<int> >(deq, 100);
 		easyfind< std::map<std::string, int> >(mymap, 2);
-		// easyfind< std::stack<int> >(stack, 30);
+		// easyfind< std::stack< int, std::vector<int> > >(stack, 30);
 		easyfind< std::set<int> >(myset, 30);
 	}
 	catch(const std::exception& e)

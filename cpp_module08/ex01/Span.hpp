@@ -2,28 +2,39 @@
 # define SPAN_HPP
 
 #include <iostream>
+#include <algorithm>
 #include <exception>
-#include <list>
+#include <vector>
 
 class Span
 {
 	private:
-		unsigned int    _N;
-		std::list<int>	_lst;
-		Span( void );
+		unsigned int		_N;
+		std::vector<int>	_vec;
 
 	public:
 
-		class SpanException : public std::exception
+		class FullSpanException : public std::exception
 		{
 			public :
-				SpanException( void ) throw () {}
-				virtual ~SpanException( void ) throw () {}
+				FullSpanException( void ) throw () {}
+				virtual ~FullSpanException( void ) throw () {}
 				virtual const char* what() const throw()
 				{
 					return "Error: Can't add more than N elements.";
 				}
 		};
+		class NoSpanException : public std::exception
+		{
+			public :
+				NoSpanException( void ) throw () {}
+				virtual ~NoSpanException( void ) throw () {}
+				virtual const char* what() const throw()
+				{
+					return "Error: Span  than N elements.";
+				}
+		};
+		Span( void );
 		virtual ~Span( void );
 		Span(Span const & src);
 		Span& operator=(Span const & rhs);
@@ -33,6 +44,7 @@ class Span
 		void	addNumber(int nb);
 		int		shortestSpan(void);
 		int		longestSpan(void);
+		void	generate_nb(void);
 };
 
 #endif

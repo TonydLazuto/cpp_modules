@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Span.hpp"
 
+
+
 int	main(void)
 {
 	try
@@ -13,6 +15,13 @@ int	main(void)
 		sp.addNumber(11);
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
+
+		std::cout << std::endl;
+		Span sp2(10000);
+		sp2.generate_nb();
+		std::cout << sp2.shortestSpan() << std::endl;
+		std::cout << sp2.longestSpan() << std::endl;
+		
 	}
 	catch(const std::exception& e)
 	{

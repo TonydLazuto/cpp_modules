@@ -1,11 +1,5 @@
 #include "easyfind.hpp"
 
-
-/**
- * Map and Set have multiple types
- * this can't work here.
- */
-
 // template<typename T>
 // class iterable_stack : public std::stack< T, std::deque<T> >
 // {};
@@ -26,10 +20,6 @@ int	main(void)
 	mymap["three"] = 3;
 
 	int myints[]= {10,20,30,40,50};
-	std::stack<int> stack;
-	stack.push(myints[0]);
-	stack.push(myints[1]);
-	stack.push(myints[2]);
 	
 	std::set<int> myset (myints,myints+5);
 	try
@@ -38,7 +28,6 @@ int	main(void)
 		easyfind< std::list<int> >(lst, 200);
 		easyfind< std::deque<int> >(deq, 100);
 		easyfind< std::map<std::string, int> >(mymap, 2);
-		// easyfind< std::stack< int, std::vector<int> > >(stack, 30);
 		easyfind< std::set<int> >(myset, 30);
 	}
 	catch(const std::exception& e)

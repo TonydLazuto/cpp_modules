@@ -1,14 +1,14 @@
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
 
-#include <iterator>
 #include <iostream>
+#include <iterator>
 #include <algorithm>
 #include <vector>
 #include <list>
-#include <stack>
 #include <map>
 #include <set>
+#include <deque>
 #include <typeinfo> // operator typeid
 
 class ContainerException: public std::exception 
@@ -75,22 +75,6 @@ void	easyfind2(std::map<std::string, int> const& map, int nb)
 		throw ContainerException();
 }
 
-// template < class T, class Container = deque<T> >
-// void	easyfind2(std::stack<T, Container> & mystack, int nb)
-// {
-// 	std::stack<T, Container>::;
-// 	while (stack::value)
-// 	{
-// 		if (it->second == nb)
-// 		{
-// 			std::cout << "Value find in container_stack: " << it->second << std::endl;
-// 			return ;
-// 		}
-// 		++it;
-// 	}
-// 	if (!mystack.size())
-// 		throw ContainerException();
-// }
 
 template < typename T >
 void	easyfind(T & container, int nb)

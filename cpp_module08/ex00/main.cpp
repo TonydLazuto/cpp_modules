@@ -1,9 +1,5 @@
 #include "easyfind.hpp"
 
-// template<typename T>
-// class iterable_stack : public std::stack< T, std::deque<T> >
-// {};
-
 int	main(void)
 {
 	std::vector<int> v (4, 100);
